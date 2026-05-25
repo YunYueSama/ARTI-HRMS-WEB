@@ -7,7 +7,7 @@
 ![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat&logo=apacheecharts&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
-基于 **Vue 3 + Element Plus + ECharts** 的企业级人力资源管理系统前端，配合 [Python 后端]([../hrms-python](https://github.com/YunYueSama/ARTI-HRMS-Python)) 使用。
+基于 **Vue 3 + Element Plus + ECharts** 的企业级人力资源管理系统前端，配合 [Python 后端]((https://github.com/YunYueSama/ARTI-HRMS-Python)) 使用。
 
 ## 技术栈
 
