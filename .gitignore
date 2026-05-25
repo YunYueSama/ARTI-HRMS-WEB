@@ -1,0 +1,61 @@
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
+
+node_modules
+.DS_Store
+dist
+dist-ssr
+coverage
+*.local
+
+# Editor directories and files
+.vscode/*
+!.vscode/extensions.json
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+*.tsbuildinfo
+
+.eslintcache
+
+# Cypress
+/cypress/videos/
+/cypress/screenshots/
+
+# Vitest
+__screenshots__/
+
+# docx
+*.docx
+
+# 环境变量
+.env
+.env.local
+.env.*.local
+
+# 调试和临时文件
+debug.html
+clear-storage.html
+fix-blank-page.ps1
+*.tmp
+*.bak
+*.old
+*~
+
+# Mock数据（已使用真实API）
+/src/mock/
+
+# 临时传输目录
+backend-transfer/
+
+ai-docs/*
