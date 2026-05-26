@@ -121,6 +121,7 @@ onMounted(loadPageData)
 
 <template>
   <div class="dept-template-page" v-loading="loading || saving">
+    <el-alert title="按部门预设权限模板，新员工入职时自动继承所属部门的默认权限。清空模板后该部门新员工将不会自动获得任何预设权限。" type="info" show-icon :closable="false" style="margin-bottom: 16px" />
     <el-card shadow="never">
       <template #header>
         <div class="card-header">

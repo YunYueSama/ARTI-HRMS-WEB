@@ -265,6 +265,7 @@ loadPageData()
 
 <template>
   <div class="approval-rule-page" v-loading="loading || saving">
+    <el-alert title="配置审批流程规则，基于请假天数等条件自动匹配审批链。规则生效后，请假申请将按天数自动走对应的审批流程，修改规则仅影响后续新申请。" type="info" show-icon :closable="false" style="margin-bottom: 16px" />
     <el-card shadow="never">
       <template #header>
         <div class="card-header">

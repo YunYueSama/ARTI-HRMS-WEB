@@ -207,6 +207,7 @@ onMounted(loadPageData)
 
 <template>
   <div class="user-page" v-loading="loading">
+    <el-alert title="管理系统用户账号，包括创建账号、分配角色、重置密码和启用/禁用登录权限。修改用户角色将直接影响该用户的菜单可见范围和操作权限。" type="info" show-icon :closable="false" style="margin-bottom: 16px" />
     <el-card shadow="never" class="search-card">
       <el-form :model="searchForm" inline>
         <el-form-item label="用户名">

@@ -221,6 +221,7 @@ onMounted(loadPageData)
 
 <template>
   <div class="role-page" v-loading="loading">
+    <el-alert title="定义系统角色并分配权限码，控制不同角色可访问的功能模块和操作按钮。修改角色权限会立即影响该角色下所有用户的操作范围。" type="info" show-icon :closable="false" style="margin-bottom: 16px" />
     <el-card shadow="never">
       <template #header>
         <div class="card-header">

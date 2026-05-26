@@ -28,9 +28,10 @@ const menuList = computed(() => {
       icon: 'MagicStick',
       children: [
         { index: '/ai-assistant', title: '亚托莉', icon: 'ChatDotRound', permission: 'dashboard:ai:view' },
-        { index: '/ai/rag', title: 'RAG 知识库', icon: 'Document', permission: 'dashboard:ai:view' },
-        { index: '/ai/trace', title: 'LLM 追踪', icon: 'DataLine', permission: 'dashboard:ai:view' },
-        { index: '/ai/graph', title: '知识图谱', icon: 'Connection', permission: 'dashboard:ai:view' }
+        { index: '/ai/rag', title: 'RAG 知识库', icon: 'Document', permission: 'dashboard:ai:rag:view' },
+        { index: '/ai/persona', title: '人设管理', icon: 'UserFilled', permission: 'dashboard:ai:persona:view' },
+        { index: '/ai/trace', title: 'LLM 追踪', icon: 'DataLine', permission: 'dashboard:ai:trace:view' },
+        { index: '/ai/graph', title: '知识图谱', icon: 'Connection', permission: 'dashboard:ai:graph:view' }
       ]
     },
     {

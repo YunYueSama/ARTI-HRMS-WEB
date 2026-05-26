@@ -7,7 +7,7 @@
 ![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat&logo=apacheecharts&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
-基于 **Vue 3 + Element Plus + ECharts** 的企业级人力资源管理系统前端，配合 [Python 后端](../hrms-python) 使用。
+基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
 
 ## 技术栈
 
@@ -56,16 +56,18 @@
 - 模块数据范围配置（公司级 / 部门级 / 个人级）
 - 审批规则引擎（基于天数条件的动态审批链）
 
-### AI 智能
+### AI 智能（亮点模块）
 
 - **亚托莉聊天**：Chat / Agent 双模式滑动切换
-  - Chat 模式：SSE 流式对话，支持知识注入和对话记忆
+  - Chat 模式：SSE 流式对话，支持混合检索知识注入和对话记忆
   - Agent 模式：自然语言触发业务操作，生成执行计划，人工审批后自动执行
   - 侧边栏实时显示模型状态、推理源、备用源连接情况
   - 快捷提问建议面板
 - **RAG 知识库**：文档上传 + 分块预览 + 语义搜索 + 文档管理
+- **人设管理**：在线编辑 AI 人设内容，支持多个人设切换激活（数据库持久化，无需改代码）
 - **LLM 追踪**：Token 用量趋势 + 费用统计 + 调用链明细
 - **知识图谱**：ECharts 力导向图可视化，节点拖拽交互
+- **AI 权限控制**：AI 模块作为顶层权限项，各子模块（RAG、人设、追踪、图谱）独立授权
 
 ### 数据报表
 
@@ -117,6 +119,7 @@ src/
 ├── api/                # API 接口封装
 │   ├── client.js       # axios 实例 + 请求/响应拦截器（snake_case 转换）
 │   ├── aiChat.js       # AI 聊天相关接口
+│   ├── persona.js      # 人设管理接口
 │   └── ...             # 各业务模块接口
 ├── assets/             # 静态资源（全局样式）
 │   └── main.css        # 全局 CSS 变量 + 基础样式
@@ -126,11 +129,11 @@ src/
 ├── layout/             # 布局组件（MainLayout、侧边栏、顶栏）
 ├── router/             # 路由配置 + 导航守卫
 ├── stores/             # Pinia 状态管理
-│   ├── user.js         # 用户信息 + 登录状态
+│   ├── user.js         # 用户信息 + 登录状态 + AI 子权限
 │   └── permission.js   # 权限码 + 角色信息
 ├── utils/              # 工具函数（审批模型、日期格式化等）
 ├── views/              # 页面视图
-│   ├── ai/             # AI 智能（亚托莉、RAG、追踪、图谱）
+│   ├── ai/             # AI 智能（亚托莉、RAG、人设管理、追踪、图谱）
 │   ├── attendance/     # 考勤管理
 │   ├── base/           # 基础信息（员工、部门、职位）
 │   ├── permission/     # 权限管理
@@ -156,6 +159,7 @@ axios 拦截器统一处理前后端命名风格差异：
 - 菜单过滤：按角色动态生成侧边栏
 - 按钮级权限：`v-if="hasPermission('xxx')"` 细粒度控制
 - 数据范围：同一页面不同角色看到不同数据
+- AI 子权限：RAG、人设管理、追踪、图谱各自独立授权
 
 **AI 双模式**
 

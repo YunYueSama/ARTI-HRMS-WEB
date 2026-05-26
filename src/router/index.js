@@ -31,19 +31,25 @@ const router = createRouter({
           path: 'ai/rag',
           name: 'RagManage',
           component: () => import('@/views/ai/RagManage.vue'),
-          meta: { title: 'RAG 知识库', icon: 'Document', permission: 'dashboard:ai:view' }
+          meta: { title: 'RAG 知识库', icon: 'Document', permission: 'dashboard:ai:rag:view' }
         },
         {
           path: 'ai/trace',
           name: 'TraceQuery',
           component: () => import('@/views/ai/TraceQuery.vue'),
-          meta: { title: 'LLM 追踪', icon: 'DataLine', permission: 'dashboard:ai:view' }
+          meta: { title: 'LLM 追踪', icon: 'DataLine', permission: 'dashboard:ai:trace:view' }
         },
         {
           path: 'ai/graph',
           name: 'KnowledgeGraph',
           component: () => import('@/views/ai/KnowledgeGraph.vue'),
-          meta: { title: '知识图谱', icon: 'Connection', permission: 'dashboard:ai:view' }
+          meta: { title: '知识图谱', icon: 'Connection', permission: 'dashboard:ai:graph:view' }
+        },
+        {
+          path: 'ai/persona',
+          name: 'PersonaManage',
+          component: () => import('@/views/ai/PersonaManage.vue'),
+          meta: { title: '人设管理', icon: 'UserFilled', permission: 'dashboard:ai:persona:view' }
         },
         {
           path: 'base/employee',

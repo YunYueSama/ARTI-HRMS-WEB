@@ -13,7 +13,12 @@ import {
 } from '@/utils/approvalModel'
 
 const ALL_PERMISSIONS = [
-  'dashboard', 'dashboard:view', 'dashboard:ai', 'dashboard:ai:view',
+  'dashboard', 'dashboard:view',
+  'dashboard:ai', 'dashboard:ai:view',
+  'dashboard:ai:rag', 'dashboard:ai:rag:view',
+  'dashboard:ai:persona', 'dashboard:ai:persona:view',
+  'dashboard:ai:trace', 'dashboard:ai:trace:view',
+  'dashboard:ai:graph', 'dashboard:ai:graph:view',
   'base', 'base:employee', 'base:department', 'base:position',
   'base:employee:view', 'base:department:view', 'base:position:view',
   'base:employee:add', 'base:employee:edit', 'base:employee:delete',
@@ -38,6 +43,11 @@ const ALL_PERMISSIONS = [
 const ROLE_PERMISSIONS = {
   HR: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'base', 'base:employee', 'base:department', 'base:position',
     'base:employee:view', 'base:department:view', 'base:position:view',
     'base:employee:add', 'base:employee:edit', 'base:employee:delete',
@@ -52,6 +62,11 @@ const ROLE_PERMISSIONS = {
   ],
   HR_MANAGER: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'base', 'base:employee', 'base:department', 'base:position',
     'base:employee:view', 'base:department:view', 'base:position:view',
     'base:employee:add', 'base:employee:edit', 'base:employee:delete',
@@ -66,6 +81,11 @@ const ROLE_PERMISSIONS = {
   ],
   MANAGER: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'base', 'base:employee', 'base:employee:view',
     'base:employee:edit',
     'attendance', 'attendance:record', 'attendance:record:view', 'attendance:leave', 'attendance:leave:view',
@@ -75,24 +95,44 @@ const ROLE_PERMISSIONS = {
   ],
   EMPLOYEE: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'attendance', 'attendance:record', 'attendance:record:view', 'attendance:leave', 'attendance:leave:view',
     'attendance:leave:add', 'attendance:leave:cancel',
     'salary', 'salary:record', 'salary:record:view'
   ],
   FINANCE_MANAGER: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'salary', 'salary:record', 'salary:record:view', 'salary:config', 'salary:config:view',
     'salary:record:approve', 'salary:record:pay',
     'salary:config:approve'
   ],
   FINANCE: [
     'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'salary', 'salary:record', 'salary:record:view', 'salary:config', 'salary:config:view',
     'salary:record:add', 'salary:record:edit', 'salary:record:submit',
     'salary:config:add', 'salary:config:edit', 'salary:config:submit'
   ],
   GENERAL_MANAGER: [
-    'dashboard', 'dashboard:view', 'dashboard:ai', 'dashboard:ai:view',
+    'dashboard', 'dashboard:view',
+    'dashboard:ai', 'dashboard:ai:view',
+    'dashboard:ai:rag', 'dashboard:ai:rag:view',
+    'dashboard:ai:persona', 'dashboard:ai:persona:view',
+    'dashboard:ai:trace', 'dashboard:ai:trace:view',
+    'dashboard:ai:graph', 'dashboard:ai:graph:view',
     'base', 'base:employee', 'base:department', 'base:position',
     'base:employee:view', 'base:department:view', 'base:position:view',
     'base:employee:add', 'base:employee:edit', 'base:employee:delete',
@@ -116,9 +156,9 @@ const ROLE_PERMISSIONS = {
 }
 
 export const MODULE_SCOPE_OPTIONS = [
-  { value: 'self', label: 'Self' },
-  { value: 'dept', label: 'Department' },
-  { value: 'company', label: 'Company' }
+  { value: 'self', label: '个人级' },
+  { value: 'dept', label: '部门级' },
+  { value: 'company', label: '公司级' }
 ]
 
 const DEFAULT_MODULE_SCOPES = {
@@ -184,12 +224,16 @@ const DEFAULT_MODULE_SCOPES = {
     }
   },
   'salary:record': {
-    default: 'dept',
+    default: 'self',
     tagScopes: {
       ADMIN: 'company',
       GENERAL_MANAGER: 'company',
       FINANCE_SPECIALIST: 'company',
-      FINANCE_MANAGER: 'company'
+      FINANCE_MANAGER: 'company',
+      HR_SPECIALIST: 'dept',
+      HR_MANAGER: 'dept',
+      MANAGER: 'dept',
+      EMPLOYEE: 'self'
     }
   },
   'salary:config': {

@@ -28,6 +28,8 @@ function convertKeysToCamel(obj) {
 // camelCase → snake_case 请求体转换（发送给 Python 后端）
 // ============================================================
 function camelToSnake(str) {
+  // 全大写或含下划线的 key（如 ADMIN、HR_SPECIALIST）不做转换
+  if (str === str.toUpperCase() || str.includes('_')) return str
   return str.replace(/[A-Z]/g, (letter) => `_${letter.toLowerCase()}`)
 }
 

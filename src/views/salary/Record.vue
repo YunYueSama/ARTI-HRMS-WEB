@@ -157,16 +157,22 @@ const calculateSalary = () => {
 const loadPageData = async () => {
   loading.value = true
   try {
-    const [salaryPage, employeePage, rulePage] = await Promise.all([
+    const [salaryResult, employeeResult, ruleResult] = await Promise.allSettled([
       listSalaryRecordsApi({ page: 1, size: 200 }),
       listEmployeesApi({ page: 1, size: 200 }),
       listApprovalRulesApi({ page: 1, size: 200, typeCode: 'salary_record' })
     ])
-    salaryRecords.value = (salaryPage.items || []).map(normalizeRecord)
-    employees.value = employeePage.items || []
-    approvalRules.value = rulePage.items || []
-  } catch (error) {
-    ElMessage.error(error.message || '薪资数据加载失败')
+    if (salaryResult.status === 'fulfilled') {
+      salaryRecords.value = (salaryResult.value.items || []).map(normalizeRecord)
+    } else {
+      ElMessage.error(salaryResult.reason?.message || '薪资数据加载失败')
+    }
+    if (employeeResult.status === 'fulfilled') {
+      employees.value = employeeResult.value.items || []
+    }
+    if (ruleResult.status === 'fulfilled') {
+      approvalRules.value = ruleResult.value.items || []
+    }
   } finally {
     loading.value = false
   }

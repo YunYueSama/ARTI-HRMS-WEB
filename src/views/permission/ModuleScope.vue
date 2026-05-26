@@ -87,6 +87,7 @@ onMounted(loadPageData)
 
 <template>
   <div class="module-scope-page" v-loading="loading || saving">
+    <el-alert title="按身份标签配置各业务模块的数据可见范围（公司级 / 部门级 / 个人级），决定用户能看到多大范围的数据。范围越大，可查看的数据越多。" type="info" show-icon :closable="false" style="margin-bottom: 16px" />
     <el-card shadow="never">
       <template #header>
         <div class="card-header">
