@@ -1,4 +1,4 @@
-# ATRI-HRMS — 前端
+<img width="1100" height="628" alt="知识图谱" src="https://github.com/user-attachments/assets/823c3993-eb1c-409f-83a5-957afda317e5" /># ATRI-HRMS — 前端
 
 ![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat&logo=vuedotjs&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white)
@@ -32,24 +32,28 @@
 - 核心数据卡片（员工总数、部门数、今日考勤、待审批）
 - 趋势图表（员工增长、考勤统计、薪资分布）
 - 快捷操作入口
+  <img width="1280" height="674" alt="首页" src="https://github.com/user-attachments/assets/7c86fc1d-6345-4011-b528-30ea6ad403e2" />
 
 ### 基础信息管理
 
 - **员工管理**：列表 + 筛选（部门 / 状态）+ 分页 + CRUD 表单
 - **部门管理**：树形结构展示 + 拖拽排序 + CRUD
 - **职位管理**：关联部门 + CRUD
+  <img width="1280" height="674" alt="员工管理" src="https://github.com/user-attachments/assets/160c7ed2-24d4-47db-9dfe-0b7442637f59" />
 
 ### 考勤管理
 
 - 打卡记录列表 + 日期范围筛选
 - 请假申请表单（类型 / 时间 / 事由）
 - 请假审批工作流（多级审批链自动匹配）
+  <img width="1280" height="674" alt="请假管理" src="https://github.com/user-attachments/assets/30ac5c58-a538-45e1-9de9-cac057936de5" />
 
 ### 薪酬管理
 
 - 薪资记录列表 + 月份筛选
 - 薪资配置（基本工资 / 绩效 / 补贴 / 扣款项）
 - 审批流程（草稿 → 已提交 → 已审批 → 已发放）
+  <img width="1280" height="674" alt="薪资记录管理" src="https://github.com/user-attachments/assets/9c2f8481-b56e-49b0-b922-4b1f21a15292" />
 
 ### 权限管理
 
