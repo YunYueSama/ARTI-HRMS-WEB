@@ -63,6 +63,7 @@
 
 - **亚托莉聊天**：Chat / Agent 双模式滑动切换
   - Chat 模式：SSE 流式对话，支持混合检索知识注入和对话记忆
+  <img width="1280" height="674" alt="chat" src="https://github.com/user-attachments/assets/55891143-61ae-4a34-a480-bddfff793c7e" />
   - Agent 模式：自然语言触发业务操作，生成执行计划，人工审批后自动执行
   - 侧边栏实时显示模型状态、推理源、备用源连接情况
   - 快捷提问建议面板
