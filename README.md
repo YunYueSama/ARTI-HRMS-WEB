@@ -8,6 +8,9 @@
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
 基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
+<div align="center">
+  <img width="900" height="400" alt="ATRI-logo-1" src="https://github.com/user-attachments/assets/3b35e062-d469-4f79-8b5b-94711bbbc10f" />
+</div>
 
 ## 技术栈
 
