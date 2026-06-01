@@ -63,14 +63,19 @@
 
 - **亚托莉聊天**：Chat / Agent 双模式滑动切换
   - Chat 模式：SSE 流式对话，支持混合检索知识注入和对话记忆
-  <img width="1280" height="674" alt="chat" src="https://github.com/user-attachments/assets/55891143-61ae-4a34-a480-bddfff793c7e" />
+    <img width="1280" height="674" alt="chat" src="https://github.com/user-attachments/assets/55891143-61ae-4a34-a480-bddfff793c7e" />
   - Agent 模式：自然语言触发业务操作，生成执行计划，人工审批后自动执行
+    <img width="1280" height="674" alt="LangGraph-agent" src="https://github.com/user-attachments/assets/4187e8d1-a077-4368-9ff7-6a173c7cf353" />
   - 侧边栏实时显示模型状态、推理源、备用源连接情况
   - 快捷提问建议面板
 - **RAG 知识库**：文档上传 + 分块预览 + 语义搜索 + 文档管理
+  <img width="1280" height="674" alt="RAG知识库" src="https://github.com/user-attachments/assets/6ecc41c5-b352-4982-9fa2-9a4f679690f5" />
 - **人设管理**：在线编辑 AI 人设内容，支持多个人设切换激活（数据库持久化，无需改代码）
+  <img width="1280" height="674" alt="角色人设" src="https://github.com/user-attachments/assets/84dddf97-eea8-43b3-9268-8c533ba465a0" />
 - **LLM 追踪**：Token 用量趋势 + 费用统计 + 调用链明细
+  <img width="1280" height="674" alt="Langfuse-LLM追踪" src="https://github.com/user-attachments/assets/61f323c6-ba3b-47e8-b374-e8ce30fb6905" />
 - **知识图谱**：ECharts 力导向图可视化，节点拖拽交互
+  <img width="1100" height="628" alt="知识图谱" src="https://github.com/user-attachments/assets/c3729dc7-58ad-4f98-9cc2-03315042a560" />
 - **AI 权限控制**：AI 模块作为顶层权限项，各子模块（RAG、人设、追踪、图谱）独立授权
 
 ### 数据报表
