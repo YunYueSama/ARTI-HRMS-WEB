@@ -7,7 +7,7 @@
 ![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat&logo=apacheecharts&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
-基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
+基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，系统覆盖组织管理、考勤、薪酬、OA 审批、权限配置和数据报表等核心人事场景，并集成了具有独立人格设定的 AI 智能助手「亚托莉」，支持自然语言查询公司数据、天气查询和 AI 代理执行操作。配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
 <div align="center">
   <img width="900" height="400" alt="ATRI-logo-1" src="https://github.com/user-attachments/assets/3b35e062-d469-4f79-8b5b-94711bbbc10f" />
 </div>
