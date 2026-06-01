@@ -1,5 +1,3 @@
-<img width="1100" height="628" alt="知识图谱" src="https://github.com/user-attachments/assets/823c3993-eb1c-409f-83a5-957afda317e5" /># ATRI-HRMS — 前端
-
 ![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat&logo=vuedotjs&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white)
 ![Element Plus](https://img.shields.io/badge/Element_Plus-2-409EFF?style=flat&logo=element&logoColor=white)
