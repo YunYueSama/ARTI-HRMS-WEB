@@ -23,6 +23,10 @@ export function searchRagApi(payload) {
   return apiClient.post('/rag/search', payload)
 }
 
+export function searchRagWithRerankApi(payload) {
+  return apiClient.post('/rag/search', { ...payload, enable_rerank: true })
+}
+
 export function reprocessDocumentApi(docId) {
   return apiClient.post(`/rag/reprocess/${docId}`)
 }

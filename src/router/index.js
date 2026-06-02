@@ -52,6 +52,12 @@ const router = createRouter({
           meta: { title: '人设管理', icon: 'UserFilled', permission: 'dashboard:ai:persona:view' }
         },
         {
+          path: 'ai/eval',
+          name: 'RagEval',
+          component: () => import('@/views/ai/RagEval.vue'),
+          meta: { title: 'RAG 评测', icon: 'DataAnalysis', permission: 'dashboard:ai:rag:view' }
+        },
+        {
           path: 'base/employee',
           name: 'Employee',
           component: () => import('@/views/base/Employee.vue'),

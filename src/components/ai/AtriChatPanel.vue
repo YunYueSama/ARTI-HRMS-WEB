@@ -2,7 +2,9 @@
 import { computed, nextTick, onMounted, ref, watch } from 'vue'
 import { ElMessage, ElMessageBox } from 'element-plus'
 import { useUserStore } from '@/stores/user'
-import { chatWithAtriApi, getChatHistoryApi, clearChatHistoryApi, getProviderInfoApi } from '@/api/aiChat'
+import { chatWithAtriApi, chatWithAtriStreamApi, getChatHistoryApi, clearChatHistoryApi, getProviderInfoApi } from '@/api/aiChat'
+import { submitFeedbackApi } from '@/api/trace'
+import { getModelConfigApi, updateModelConfigApi } from '@/api/config'
 import AgentTaskPanel from './AgentTaskPanel.vue'
 
 const props = defineProps({
@@ -20,6 +22,13 @@ const providerAvailable = ref(true)
 const providerNotice = ref('')
 const sourceHints = ref([])
 const isSuggestionsExpanded = ref(true)
+const feedbackGiven = ref({}) // { messageId: 1 | -1 }
+let currentStreamController = null
+
+// 模型切换
+const modelOptions = ref([])
+const currentModel = ref('')
+const modelSwitching = ref(false)
 
 // Chat / Agent 模式切换
 const activeMode = ref('chat')
@@ -32,7 +41,7 @@ const suggestionList = [
   '帮我总结一下我当前的岗位、部门和身份标签。',
   '最近请假审批规则是什么？',
   '考勤和请假数据主要能查到哪些内容？',
-  '今天绵阳的天气怎么样？',
+  '今天的天气怎么样？',
   '今天工作有点累，陪我聊聊天吧。'
 ]
 
@@ -61,9 +70,46 @@ async function loadProviderInfo() {
     modelLabel.value = info.model || '未连接'
     providerLabel.value = info.provider || '未配置'
     providerAvailable.value = info.providerAvailable !== false
+    currentModel.value = info.model || ''
+
+    // 加载可选模型列表
+    try {
+      const config = await getModelConfigApi()
+      if (config?.availableModels) {
+        modelOptions.value = config.availableModels
+      } else {
+        // 默认模型选项
+        modelOptions.value = [
+          { label: 'qwen-plus（推荐）', value: 'qwen-plus' },
+          { label: 'qwen-turbo（快速）', value: 'qwen-turbo' },
+          { label: 'qwen3:4b（本地）', value: 'qwen3:4b' },
+        ]
+      }
+    } catch {
+      modelOptions.value = [
+        { label: 'qwen-plus（推荐）', value: 'qwen-plus' },
+        { label: 'qwen-turbo（快速）', value: 'qwen-turbo' },
+        { label: 'qwen3:4b（本地）', value: 'qwen3:4b' },
+      ]
+    }
   } catch (error) {
     modelLabel.value = '未连接'
     providerLabel.value = '未配置'
+  }
+}
+
+async function switchModel(modelName) {
+  if (modelName === currentModel.value || modelSwitching.value) return
+  modelSwitching.value = true
+  try {
+    await updateModelConfigApi({ model_name: modelName })
+    currentModel.value = modelName
+    modelLabel.value = modelName
+    ElMessage.success(`已切换到 ${modelName}`)
+  } catch (err) {
+    ElMessage.error('模型切换失败：' + (err.message || '未知错误'))
+  } finally {
+    modelSwitching.value = false
   }
 }
 
@@ -132,37 +178,58 @@ async function sendMessage() {
   input.value = ''
   sending.value = true
 
-  const thinkingId = `thinking-${Date.now()}`
-  const thinkingMessages = [
-    '亚托莉正在高性能思考中......',
-    '让我来仔细分析一下......',
-    '高性能的我正在处理你的问题......',
-    '请稍等，我在认真思考......',
-    '毕竟我是高性能的，马上就好......'
-  ]
-  pushMessage({ id: thinkingId, role: 'assistant', content: thinkingMessages[Math.floor(Math.random() * thinkingMessages.length)], meta: 'thinking' })
+  // 创建空 bubble 用于流式填充
+  const assistantId = `assistant-${Date.now()}`
+  pushMessage({ id: assistantId, role: 'assistant', content: '', meta: 'streaming' })
 
+  // 使用 SSE 流式接收
+  currentStreamController = chatWithAtriStreamApi(
+    { userId: userStore.user.userId, message, history: chatHistoryPayload.value },
+    {
+      onChunk(text) {
+        const msg = messages.value.find(m => m.id === assistantId)
+        if (msg) {
+          msg.content += text
+          scrollToBottom()
+        }
+      },
+      onDone(meta) {
+        const msg = messages.value.find(m => m.id === assistantId)
+        if (msg) {
+          if (!msg.content) msg.content = buildFriendlyFallback()
+          msg.meta = 'chat-only'
+          msg.traceId = meta?.traceId
+        }
+        modelLabel.value = meta?.model || modelLabel.value
+        providerLabel.value = meta?.provider || providerLabel.value
+        providerAvailable.value = true
+        sending.value = false
+        currentStreamController = null
+      },
+      onError(err) {
+        const msg = messages.value.find(m => m.id === assistantId)
+        if (msg) {
+          if (!msg.content) msg.content = buildFriendlyFallback()
+          msg.meta = 'error'
+        }
+        providerAvailable.value = false
+        ElMessage.error('亚托莉暂时没有回应，请稍后再试。')
+        sending.value = false
+        currentStreamController = null
+      },
+    }
+  )
+}
+
+async function giveFeedback(messageId, score) {
+  if (feedbackGiven.value[messageId]) return
   try {
-    const response = await chatWithAtriApi({ userId: userStore.user.userId, message, history: chatHistoryPayload.value })
-    const idx = messages.value.findIndex(msg => msg.id === thinkingId)
-    if (idx !== -1) messages.value.splice(idx, 1)
-
-    modelLabel.value = response.model || '未连接'
-    providerLabel.value = response.provider || '未配置'
-    providerAvailable.value = response.providerAvailable !== false
-    providerNotice.value = response.notice || ''
-    sourceHints.value = response.sources || []
-
-    pushMessage({ id: `assistant-${Date.now()}`, role: 'assistant', content: response.reply || buildFriendlyFallback(), meta: response.usedSystemData ? 'used-system-data' : 'chat-only' })
-  } catch (error) {
-    const idx = messages.value.findIndex(msg => msg.id === thinkingId)
-    if (idx !== -1) messages.value.splice(idx, 1)
-    providerAvailable.value = false
-    providerNotice.value = error.message || '聊天服务暂时不可用'
-    ElMessage.error(error.message || '亚托莉暂时没有回应，请稍后再试。')
-    pushMessage({ id: `assistant-error-${Date.now()}`, role: 'assistant', content: buildFriendlyFallback(), meta: 'error' })
-  } finally {
-    sending.value = false
+    await submitFeedbackApi({ traceId: messageId, score, userId: userStore.user?.userId })
+    feedbackGiven.value[messageId] = score
+    ElMessage.success(score > 0 ? '感谢反馈！' : '已记录，会持续改进')
+  } catch {
+    // 静默失败
+    feedbackGiven.value[messageId] = score
   }
 }
 
@@ -206,7 +273,17 @@ function handleKeydown(event) {
         </div>
         <div class="capability-item" :data-available="providerAvailable">
           <span>当前模型</span>
-          <strong>{{ modelLabel }}</strong>
+          <el-select
+            v-if="modelOptions.length > 0"
+            :model-value="currentModel"
+            @update:model-value="switchModel"
+            :loading="modelSwitching"
+            size="small"
+            style="width: 100%; margin-top: 6px;"
+          >
+            <el-option v-for="opt in modelOptions" :key="opt.value" :label="opt.label" :value="opt.value" />
+          </el-select>
+          <strong v-else>{{ modelLabel }}</strong>
           <div class="capability-desc">{{ providerAvailable ? '模型运行正常，响应速度良好' : '模型连接异常，请检查配置' }}</div>
         </div>
         <div class="capability-item" :data-available="providerAvailable">
@@ -254,7 +331,21 @@ function handleKeydown(event) {
               <img v-if="item.role === 'assistant'" :src="avatar" alt="亚托莉头像" class="bubble-avatar" />
               <div :class="['bubble', item.role]" :data-meta="item.meta">
                 <div class="bubble-role">{{ item.role === 'assistant' ? '亚托莉' : '你' }}</div>
-                <div class="bubble-content">{{ item.content }}</div>
+                <div class="bubble-content">{{ item.content }}<span v-if="item.meta === 'streaming'" class="cursor-blink">▋</span></div>
+                <div v-if="item.role === 'assistant' && item.meta !== 'thinking' && item.meta !== 'streaming' && item.meta !== 'ready'" class="bubble-actions">
+                  <button
+                    :class="['feedback-btn', { active: feedbackGiven[item.id] === 1 }]"
+                    @click="giveFeedback(item.id, 1)"
+                    :disabled="feedbackGiven[item.id]"
+                    title="回答有帮助"
+                  >👍</button>
+                  <button
+                    :class="['feedback-btn', { active: feedbackGiven[item.id] === -1 }]"
+                    @click="giveFeedback(item.id, -1)"
+                    :disabled="feedbackGiven[item.id]"
+                    title="回答不准确"
+                  >👎</button>
+                </div>
               </div>
             </div>
           </div>
@@ -398,6 +489,15 @@ button, .el-button, .suggestion-chip, .toggle-btn { user-select: none; }
 .bubble.assistant[data-meta="thinking"] { background: rgba(255, 248, 220, 0.95); border: 1px solid rgba(245, 158, 11, 0.2); color: #92400e; font-style: italic; animation: thinking-pulse 1.5s ease-in-out infinite; }
 @keyframes thinking-pulse { 0%, 100% { opacity: 0.8; transform: scale(1); } 50% { opacity: 1; transform: scale(1.02); } }
 .bubble-role { margin-bottom: 4px; font-size: 11px; font-weight: 700; letter-spacing: 0.06em; opacity: 0.75; }
+
+.bubble-actions { display: flex; gap: 6px; margin-top: 8px; justify-content: flex-end; }
+.feedback-btn { border: none; background: transparent; cursor: pointer; font-size: 16px; padding: 2px 6px; border-radius: 6px; transition: all 0.2s; opacity: 0.5; }
+.feedback-btn:hover:not(:disabled) { opacity: 1; background: rgba(0,0,0,0.05); transform: scale(1.15); }
+.feedback-btn.active { opacity: 1; background: rgba(59, 130, 246, 0.1); }
+.feedback-btn:disabled { cursor: default; }
+
+.cursor-blink { animation: blink 0.8s infinite; }
+@keyframes blink { 0%, 100% { opacity: 1; } 50% { opacity: 0; } }
 
 .source-strip { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; margin: 4px 0 12px; flex-shrink: 0; }
 .source-label { color: #64748b; font-size: 12px; }

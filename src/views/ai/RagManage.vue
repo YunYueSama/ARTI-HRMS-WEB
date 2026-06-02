@@ -16,6 +16,7 @@ const uploading = ref(false)
 const searchQuery = ref('')
 const searchResults = ref([])
 const searching = ref(false)
+const enableRerank = ref(false)
 
 // 分块预览
 const chunkDialogVisible = ref(false)
@@ -125,7 +126,11 @@ const handleSearch = async () => {
   }
   searching.value = true
   try {
-    const res = await searchRagApi({ query: searchQuery.value.trim(), top_k: 5 })
+    const res = await searchRagApi({
+      query: searchQuery.value.trim(),
+      top_k: 5,
+      enable_rerank: enableRerank.value,
+    })
     searchResults.value = res || []
   } catch (error) {
     ElMessage.error(error.message || '搜索失败')
@@ -261,12 +266,19 @@ onMounted(loadDocuments)
             <el-button :loading="searching" @click="handleSearch" type="primary">搜索</el-button>
           </template>
         </el-input>
+        <div class="search-options">
+          <el-switch v-model="enableRerank" active-text="Rerank 精排" inactive-text="基础检索" />
+          <span class="rerank-hint">{{ enableRerank ? '向量检索 + LLM 精排（更准确）' : '仅向量相似度排序' }}</span>
+        </div>
       </div>
       <div class="search-results" v-if="searchResults.length > 0">
         <div class="result-card" v-for="(item, index) in searchResults" :key="index">
           <div class="result-header">
             <el-tag size="small" type="success" effect="dark">
               相似度 {{ (item.score * 100).toFixed(1) }}%
+            </el-tag>
+            <el-tag v-if="item.rerankScore" size="small" type="warning" effect="dark">
+              Rerank {{ (item.rerankScore * 100).toFixed(1) }}%
             </el-tag>
             <span class="result-source">{{ item.filename || item.source || '未知来源' }}</span>
           </div>
@@ -408,6 +420,18 @@ onMounted(loadDocuments)
 
 .search-bar {
   margin-bottom: 20px;
+}
+
+.search-options {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+}
+
+.rerank-hint {
+  font-size: 12px;
+  color: #909399;
 }
 
 .search-results {
