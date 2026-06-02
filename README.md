@@ -1,5 +1,3 @@
-# ATRI-HRMS — 前端
-
 ![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat&logo=vuedotjs&logoColor=white)
 ![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white)
 ![Element Plus](https://img.shields.io/badge/Element_Plus-2-409EFF?style=flat&logo=element&logoColor=white)
@@ -7,7 +5,10 @@
 ![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat&logo=apacheecharts&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
 
-基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
+基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，系统覆盖组织管理、考勤、薪酬、OA 审批、权限配置和数据报表等核心人事场景，并集成了具有独立人格设定的 AI 智能助手「亚托莉」，支持自然语言查询公司数据、天气查询和 AI 代理执行操作。配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
+<div align="center">
+  <img width="900" height="400" alt="ATRI-logo-1" src="https://github.com/user-attachments/assets/3b35e062-d469-4f79-8b5b-94711bbbc10f" />
+</div>
 
 ## 技术栈
 
@@ -29,24 +30,28 @@
 - 核心数据卡片（员工总数、部门数、今日考勤、待审批）
 - 趋势图表（员工增长、考勤统计、薪资分布）
 - 快捷操作入口
+  <img width="1280" height="674" alt="首页" src="https://github.com/user-attachments/assets/7c86fc1d-6345-4011-b528-30ea6ad403e2" />
 
 ### 基础信息管理
 
 - **员工管理**：列表 + 筛选（部门 / 状态）+ 分页 + CRUD 表单
 - **部门管理**：树形结构展示 + 拖拽排序 + CRUD
 - **职位管理**：关联部门 + CRUD
+  <img width="1280" height="674" alt="员工管理" src="https://github.com/user-attachments/assets/160c7ed2-24d4-47db-9dfe-0b7442637f59" />
 
 ### 考勤管理
 
 - 打卡记录列表 + 日期范围筛选
 - 请假申请表单（类型 / 时间 / 事由）
 - 请假审批工作流（多级审批链自动匹配）
+  <img width="1280" height="674" alt="请假管理" src="https://github.com/user-attachments/assets/30ac5c58-a538-45e1-9de9-cac057936de5" />
 
 ### 薪酬管理
 
 - 薪资记录列表 + 月份筛选
 - 薪资配置（基本工资 / 绩效 / 补贴 / 扣款项）
 - 审批流程（草稿 → 已提交 → 已审批 → 已发放）
+  <img width="1280" height="674" alt="薪资记录管理" src="https://github.com/user-attachments/assets/9c2f8481-b56e-49b0-b922-4b1f21a15292" />
 
 ### 权限管理
 
