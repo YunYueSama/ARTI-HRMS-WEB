@@ -1,101 +1,144 @@
-![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat&logo=vuedotjs&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-5-646CFF?style=flat&logo=vite&logoColor=white)
-![Element Plus](https://img.shields.io/badge/Element_Plus-2-409EFF?style=flat&logo=element&logoColor=white)
-![Pinia](https://img.shields.io/badge/Pinia-2-FAD03C?style=flat&logo=vuedotjs&logoColor=white)
-![ECharts](https://img.shields.io/badge/ECharts-5-AA344D?style=flat&logo=apacheecharts&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-5A29E4?style=flat&logo=axios&logoColor=white)
-
-基于 **Vue 3 + Element Plus + ECharts** 的企业级智能人力资源管理系统前端，系统覆盖组织管理、考勤、薪酬、OA 审批、权限配置和数据报表等核心人事场景，并集成了具有独立人格设定的 AI 智能助手「亚托莉」，支持自然语言查询公司数据、天气查询和 AI 代理执行操作。配合 [Python 后端](https://github.com/YunYueSama/ARTI-HRMS-Python) 使用。
 <div align="center">
-  <img width="900" height="400" alt="ATRI-logo-1" src="https://github.com/user-attachments/assets/3b35e062-d469-4f79-8b5b-94711bbbc10f" />
+
+<img src="imgs/ATRI-logo.png" width="120" alt="ATRI Logo" />
+
+# ATRI-HRMS
+
+**基于 AI 的智能人力资源管理系统**
+
+![Vue.js](https://img.shields.io/badge/Vue.js-3-4FC08D?style=flat&logo=vuedotjs&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-7-646CFF?style=flat&logo=vite&logoColor=white)
+![Element Plus](https://img.shields.io/badge/Element_Plus-2-409EFF?style=flat&logo=element&logoColor=white)
+![ECharts](https://img.shields.io/badge/ECharts-6-AA344D?style=flat&logo=apacheecharts&logoColor=white)
+![Pinia](https://img.shields.io/badge/Pinia-3-FAD03C?style=flat&logo=vuedotjs&logoColor=white)
+
+覆盖组织管理、考勤、薪酬、OA 审批、权限配置和数据报表等核心人事场景，集成 AI 智能助手「亚托莉」，支持自然语言查询公司数据与 AI 代理执行操作。
+
 </div>
+
+---
+
+## 系统预览
+
+<div align="center">
+  <img src="imgs/首页.png" width="900" alt="首页仪表盘" />
+</div>
+
+## 核心功能
+
+### AI 智能助手
+
+集成具有独立人格设定的 AI 助手「亚托莉」，支持 Chat / Agent 双模式切换。
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="imgs/chat.png" alt="AI 聊天" />
+    </td>
+    <td width="50%">
+      <img src="imgs/agent.png" alt="AI Agent" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>Chat 模式</b><br/>SSE 流式对话，逐字渲染，支持模型切换与反馈</td>
+    <td align="center"><b>Agent 模式</b><br/>自然语言触发业务操作，生成执行计划，人工审批后自动执行</td>
+  </tr>
+</table>
+
+### RAG 知识库与评测
+
+文档上传 + 分块预览 + 语义搜索 + Rerank 精排，支持一键评测（Faithfulness / Relevancy / Precision）。
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="imgs/RAG知识库.png" alt="RAG 知识库" />
+    </td>
+    <td width="50%">
+      <img src="imgs/RAG测评.png" alt="RAG 评测" />
+    </td>
+  </tr>
+</table>
+
+### 知识图谱与 LLM 追踪
+
+ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪与费用统计。
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="imgs/知识图谱.png" alt="知识图谱" />
+    </td>
+    <td width="50%">
+      <img src="imgs/Langfuse-LLM追踪.png" alt="LLM 追踪" />
+    </td>
+  </tr>
+</table>
+
+### 人事管理
+
+<table>
+  <tr>
+    <td width="50%">
+      <img src="imgs/员工管理.png" alt="员工管理" />
+    </td>
+    <td width="50%">
+      <img src="imgs/薪资记录管理.png" alt="薪资管理" />
+    </td>
+  </tr>
+  <tr>
+    <td align="center"><b>员工管理</b><br/>列表筛选 + 分页 + CRUD + 移动端自适应</td>
+    <td align="center"><b>薪酬管理</b><br/>薪资记录 + 配置 + 多级审批流程</td>
+  </tr>
+</table>
+
+---
 
 ## 技术栈
 
 | 类别 | 技术 |
 |------|------|
 | 框架 | Vue 3 (Composition API + `<script setup>`) |
-| 构建 | Vite 5 |
+| 构建 | Vite 7 |
 | UI 库 | Element Plus |
-| 状态管理 | Pinia |
+| 状态管理 | Pinia 3 |
 | 路由 | Vue Router 4 |
 | HTTP | Axios（自动 snake_case ↔ camelCase 转换） |
-| 图表 | ECharts 5 (vue-echarts) |
-| 样式 | Scoped CSS + CSS Variables |
+| 图表 | ECharts 6 (vue-echarts) |
+| 样式 | Scoped CSS + CSS Variables + Geist 字体 |
 
-## 功能页面
+## 功能模块
 
-### 首页仪表盘
-
-- 核心数据卡片（员工总数、部门数、今日考勤、待审批）
-- 趋势图表（员工增长、考勤统计、薪资分布）
-- 快捷操作入口
-  <img width="1280" height="674" alt="首页" src="https://github.com/user-attachments/assets/7c86fc1d-6345-4011-b528-30ea6ad403e2" />
-
-### 基础信息管理
-
-- **员工管理**：列表 + 筛选（部门 / 状态）+ 分页 + CRUD 表单
-- **部门管理**：树形结构展示 + 拖拽排序 + CRUD
-- **职位管理**：关联部门 + CRUD
-  <img width="1280" height="674" alt="员工管理" src="https://github.com/user-attachments/assets/160c7ed2-24d4-47db-9dfe-0b7442637f59" />
-
-### 考勤管理
-
-- 打卡记录列表 + 日期范围筛选
-- 请假申请表单（类型 / 时间 / 事由）
-- 请假审批工作流（多级审批链自动匹配）
-  <img width="1280" height="674" alt="请假管理" src="https://github.com/user-attachments/assets/30ac5c58-a538-45e1-9de9-cac057936de5" />
-
-### 薪酬管理
-
-- 薪资记录列表 + 月份筛选
-- 薪资配置（基本工资 / 绩效 / 补贴 / 扣款项）
-- 审批流程（草稿 → 已提交 → 已审批 → 已发放）
-  <img width="1280" height="674" alt="薪资记录管理" src="https://github.com/user-attachments/assets/9c2f8481-b56e-49b0-b922-4b1f21a15292" />
-
-### 权限管理
-
-- 用户 CRUD + 角色分配
-- 角色 CRUD + 权限码分配（树形勾选）
-- 身份标签管理（员工 / HR / 财务 / 管理员）
-- 模块数据范围配置（公司级 / 部门级 / 个人级）
-- 审批规则引擎（基于天数条件的动态审批链）
-
-### AI 智能（亮点模块）
-
-- **亚托莉聊天**：Chat / Agent 双模式滑动切换
-  - Chat 模式：SSE 流式对话（fetch + ReadableStream），逐字渲染，光标闪烁动画
-  - Agent 模式：自然语言触发业务操作，生成执行计划，人工审批后自动执行
-  - 侧边栏实时显示模型状态、推理源，支持下拉框切换模型（qwen-plus / qwen-turbo / qwen3:4b）
-  - 快捷提问建议面板
-  - 每条回复提供 👍/👎 反馈按钮，关联 Langfuse Trace
-- **RAG 知识库**：文档上传 + 分块预览 + 语义搜索 + Rerank 精排开关 + 文档管理
-- **RAG 评测**：评测数据集管理（JSON 导入/导出）+ 一键评测 + 三维指标卡片（Faithfulness / Relevancy / Precision）+ 逐条结果表格
-- **人设管理**：在线编辑 AI 人设内容，支持多个人设切换激活（数据库持久化，无需改代码）
-- **LLM 追踪**：Token 用量趋势 + 费用统计 + 调用链明细 + 用户反馈状态
-- **知识图谱**：ECharts 力导向图可视化，节点拖拽交互
-- **AI 权限控制**：AI 模块作为顶层权限项，各子模块（RAG、评测、人设、追踪、图谱）独立授权
-
-### 数据报表
-
-- 员工统计（部门分布、入职趋势、在职状态）
-- 考勤概览（出勤率、迟到率、请假分布）
-- 薪资汇总（部门薪资对比、月度趋势）
+| 模块 | 功能 |
+|------|------|
+| **首页仪表盘** | 核心数据卡片、趋势图表、快捷操作、个人考勤 |
+| **基础信息** | 员工 / 部门 / 职位 CRUD，树形结构，拖拽排序 |
+| **考勤管理** | 打卡记录、请假申请、多级审批链自动匹配 |
+| **薪酬管理** | 薪资记录、配置、审批流程（草稿 → 已发放） |
+| **权限管理** | 用户 / 角色 / 权限码、身份标签、模块数据范围、审批规则引擎 |
+| **AI 智能** | 亚托莉聊天、RAG 知识库、RAG 评测、人设管理、LLM 追踪、知识图谱 |
+| **数据报表** | 员工统计、考勤概览、薪资汇总 |
 
 ## 快速开始
 
-### 1. 环境要求
+### 环境要求
 
-- Node.js 18+
+- Node.js `^20.19.0 || >=22.12.0`
 - npm 9+ 或 pnpm
 
-### 2. 安装依赖
+### 安装与运行
 
 ```bash
+# 安装依赖
 npm install
+
+# 启动开发服务器
+npm run dev
 ```
 
-### 3. 配置 API 地址（可选）
+访问 http://localhost:5173
+
+### 配置 API 地址（可选）
 
 创建 `.env.local`，默认代理到 `localhost:8000`：
 
@@ -103,15 +146,7 @@ npm install
 VITE_API_BASE_URL=http://localhost:8000/api
 ```
 
-### 4. 启动开发服务器
-
-```bash
-npm run dev
-```
-
-访问 http://localhost:5173
-
-### 5. 构建生产版本
+### 构建生产版本
 
 ```bash
 npm run build
@@ -124,77 +159,41 @@ npm run build
 ```
 src/
 ├── api/                # API 接口封装
-│   ├── client.js       # axios 实例 + 请求/响应拦截器（snake_case 转换）
-│   ├── aiChat.js       # AI 聊天接口（含 SSE 流式）
-│   ├── rag.js          # RAG 知识库接口
-│   ├── ragEval.js      # RAG 评测接口
-│   ├── config.js       # 模型配置接口
-│   ├── persona.js      # 人设管理接口
+│   ├── client.js       # axios 实例 + 请求/响应拦截器
+│   ├── aiChat.js       # AI 聊天（SSE 流式）
 │   └── ...             # 各业务模块接口
-├── assets/             # 静态资源（全局样式）
-│   └── main.css        # 全局 CSS 变量 + 基础样式
-├── components/         # 公共组件
-│   ├── ai/             # AI 聊天面板（AtriChatPanel）、Agent 任务面板
-│   └── ...             # 业务公共组件
-├── layout/             # 布局组件（MainLayout、侧边栏、顶栏）
-├── router/             # 路由配置 + 导航守卫
+├── assets/
+│   └── main.css        # 全局设计系统（CSS 变量 + 组件样式）
+├── components/
+│   └── ai/             # AI 聊天面板、Agent 任务面板
+├── layout/             # 布局组件（侧边栏、顶栏）
+├── router/             # 路由 + 导航守卫
 ├── stores/             # Pinia 状态管理
-│   ├── user.js         # 用户信息 + 登录状态 + AI 子权限
-│   └── permission.js   # 权限码 + 角色信息
-├── utils/              # 工具函数（审批模型、日期格式化等）
-├── views/              # 页面视图
-│   ├── ai/             # AI 智能（亚托莉、RAG、RAG 评测、人设管理、追踪、图谱）
-│   ├── attendance/     # 考勤管理
-│   ├── base/           # 基础信息（员工、部门、职位）
-│   ├── permission/     # 权限管理
-│   ├── report/         # 数据报表
-│   └── salary/         # 薪酬管理
-├── App.vue
-└── main.js
+├── utils/              # 工具函数
+└── views/              # 页面视图
+    ├── ai/             # AI 智能模块
+    ├── attendance/     # 考勤管理
+    ├── base/           # 基础信息
+    ├── permission/     # 权限管理
+    ├── salary/         # 薪酬管理
+    └── Report.vue      # 数据报表
 ```
 
 ## 设计特点
 
-**自动数据格式转换**
+**统一设计系统** — 30+ 语义化 CSS 变量覆盖文本、表面、边框、状态色板，全局一致的 spring 物理缓动与微交互。
 
-axios 拦截器统一处理前后端命名风格差异：
-- 请求：前端 camelCase → 后端 snake_case
-- 响应：后端 snake_case → 前端 camelCase
+**四层权限控制** — 路由守卫 → 菜单过滤 → 按钮级权限 → 数据范围，AI 子模块独立授权。
 
-业务代码无需手动转换字段名。
+**SSE 流式输出** — `fetch + ReadableStream` 实现逐字渲染，配合光标闪烁动画增强实时感。
 
-**四层权限控制**
+**反馈闭环** — 每条 AI 回复提供 👍/👎 按钮，关联 Langfuse Trace，形成质量监控闭环。
 
-- 路由守卫：未登录 / 无权限自动跳转
-- 菜单过滤：按角色动态生成侧边栏
-- 按钮级权限：`v-if="hasPermission('xxx')"` 细粒度控制
-- 数据范围：同一页面不同角色看到不同数据
-- AI 子权限：RAG、人设管理、追踪、图谱各自独立授权
+**响应式设计** — 桌面端表格视图 + 移动端卡片视图自动切换，768px / 480px 双断点适配。
 
-**AI 双模式**
+## 相关项目
 
-Chat 聊天和 Agent 代理执行集成在同一面板，通过顶部 Tab 滑动切换，共享聊天历史和输入框。
-
-**SSE 流式输出**
-
-使用 `fetch + ReadableStream` 实现 Server-Sent Events 接收，LLM 逐字输出，配合光标闪烁动画（▋）增强实时感。`think` 思考标签在后端自动过滤，前端不会显示模型内部推理过程。
-
-**反馈闭环**
-
-每条 AI 回复右下角提供 👍/👎 按钮，点击后调用 Langfuse 反馈 API 关联到具体 Trace，形成「用户反馈 → 质量监控 → 策略优化」闭环。
-
-**模型运行时切换**
-
-侧边栏增加模型下拉选择框，支持 qwen-plus / qwen-turbo / qwen3:4b 之间热切换，通过 `PUT /api/config/model` 热更新后端配置，零停机。
-
-**组件化 AI 面板**
-
-`AtriChatPanel.vue` 是一个独立组件，通过 props 接收头像配置，可嵌入任意页面。内部封装了消息渲染、SSE 流式接收、历史加载、模型状态监控、反馈按钮等逻辑。
-
-## 相关文档
-
-- [项目根 README](../README.md) — 项目总览
-- [后端 README](../hrms-python/README.md) — 后端架构和 API 文档
+- [ARTI-HRMS-Python](https://github.com/YunYueSama/ARTI-HRMS-Python) — Python 后端服务
 
 ## License
 
