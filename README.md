@@ -36,11 +36,11 @@
   <tr>
     <td width="50%">
       <!-- TODO: 拖入 chat.png -->
-      <img src="https://github.com/user-attachments/assets/chat" alt="AI 聊天" />
+      <img src="https://github.com/user-attachments/assets/chat" width="100%" alt="AI 聊天" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 agent.png -->
-      <img src="https://github.com/user-attachments/assets/agent" alt="AI Agent" />
+      <img src="https://github.com/user-attachments/assets/agent" width="100%" alt="AI Agent" />
     </td>
   </tr>
   <tr>
@@ -57,11 +57,11 @@
   <tr>
     <td width="50%">
       <!-- TODO: 拖入 RAG知识库.png -->
-      <img src="https://github.com/user-attachments/assets/RAG知识库" alt="RAG 知识库" />
+      <img src="https://github.com/user-attachments/assets/RAG知识库" width="100%" alt="RAG 知识库" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 RAG测评.png -->
-      <img src="https://github.com/user-attachments/assets/RAG测评" alt="RAG 评测" />
+      <img src="https://github.com/user-attachments/assets/RAG测评" width="100%" alt="RAG 评测" />
     </td>
   </tr>
 </table>
@@ -74,11 +74,11 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
   <tr>
     <td width="50%">
       <!-- TODO: 拖入 知识图谱.png -->
-      <img src="https://github.com/user-attachments/assets/知识图谱" alt="知识图谱" />
+      <img src="https://github.com/user-attachments/assets/知识图谱" width="100%" alt="知识图谱" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 Langfuse-LLM追踪.png -->
-      <img src="https://github.com/user-attachments/assets/Langfuse-LLM追踪" alt="LLM 追踪" />
+      <img src="https://github.com/user-attachments/assets/Langfuse-LLM追踪" width="100%" alt="LLM 追踪" />
     </td>
   </tr>
 </table>
@@ -89,11 +89,11 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
   <tr>
     <td width="50%">
       <!-- TODO: 拖入 员工管理.png -->
-      <img src="https://github.com/user-attachments/assets/员工管理" alt="员工管理" />
+      <img src="https://github.com/user-attachments/assets/员工管理" width="100%" alt="员工管理" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 薪资记录管理.png -->
-      <img src="https://github.com/user-attachments/assets/薪资记录管理" alt="薪资管理" />
+      <img src="https://github.com/user-attachments/assets/薪资记录管理" width="100%" alt="薪资管理" />
     </td>
   </tr>
   <tr>
