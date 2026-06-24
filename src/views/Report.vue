@@ -186,7 +186,7 @@ const deptChartOption = computed(() => ({
     type: 'bar',
     data: deptStats.value.map(item => item.value),
     itemStyle: {
-      color: (params) => ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#00D4FF'][params.dataIndex % 6]
+      color: (params) => ['#2563eb', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#00D4FF'][params.dataIndex % 6]
     },
     label: { show: true, position: 'top' }
   }]
@@ -225,7 +225,7 @@ const salaryTrendOption = computed(() => ({
     { type: 'value', name: '平均薪资(元)', position: 'right' }
   ],
   series: [
-    { name: '总薪资', type: 'bar', data: monthKeys.value.map(key => Number(salaryMonthStats.value[key].total.toFixed(2))), itemStyle: { color: '#409EFF' } },
+    { name: '总薪资', type: 'bar', data: monthKeys.value.map(key => Number(salaryMonthStats.value[key].total.toFixed(2))), itemStyle: { color: '#2563eb' } },
     {
       name: '平均薪资',
       type: 'line',
@@ -250,7 +250,7 @@ const deptSalaryOption = computed(() => ({
     type: 'bar',
     data: deptSalaryOptionData.value.map(item => Number(item.value.toFixed(2))),
     itemStyle: {
-      color: (params) => ['#409EFF', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#00D4FF'][params.dataIndex % 6]
+      color: (params) => ['#2563eb', '#67C23A', '#E6A23C', '#F56C6C', '#909399', '#00D4FF'][params.dataIndex % 6]
     },
     label: { show: true, position: 'top' }
   }]
@@ -441,8 +441,8 @@ onMounted(loadPageData)
 .stat-summary h3 {
   margin: 0 0 20px 0;
   padding-bottom: 10px;
-  border-bottom: 1px solid #eee;
-  color: #303133;
+  border-bottom: 1px solid var(--border-default);
+  color: var(--text-primary);
 }
 
 .stat-item {
@@ -450,7 +450,7 @@ onMounted(loadPageData)
   justify-content: space-between;
   align-items: center;
   padding: 12px 0;
-  border-bottom: 1px dashed #eee;
+  border-bottom: 1px dashed var(--border-default);
 }
 
 .stat-item:last-child {
@@ -458,21 +458,21 @@ onMounted(loadPageData)
 }
 
 .stat-item .label {
-  color: #606266;
+  color: var(--text-secondary);
 }
 
 .stat-item .value {
   font-size: 20px;
   font-weight: bold;
-  color: #303133;
+  color: var(--text-primary);
 }
 
 .stat-item .value.success {
-  color: #67C23A;
+  color: var(--status-success);
 }
 
 .stat-item .value.warning {
-  color: #E6A23C;
+  color: var(--status-warning);
 }
 
 .stat-box {
@@ -483,24 +483,24 @@ onMounted(loadPageData)
 .stat-box .stat-num {
   font-size: 36px;
   font-weight: bold;
-  color: #409EFF;
+  color: var(--primary-solid);
 }
 
 .stat-box .stat-num.success {
-  color: #67C23A;
+  color: var(--status-success);
 }
 
 .stat-box .stat-num.warning {
-  color: #E6A23C;
+  color: var(--status-warning);
 }
 
 .stat-box .stat-num.danger {
-  color: #F56C6C;
+  color: var(--status-danger);
 }
 
 .stat-box .stat-label {
   margin-top: 10px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 @media (max-width: 768px) {

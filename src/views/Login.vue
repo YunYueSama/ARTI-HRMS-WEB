@@ -17,6 +17,7 @@ const formRef = ref(null)
 const currentBgIndex = ref(0)
 const nextBgIndex = ref(1)
 const isTransitioning = ref(false)
+const showAccounts = ref(false)
 
 // 背景图片列表（排除竖屏的01）
 const backgroundImages = [
@@ -93,22 +94,23 @@ onMounted(() => {
           <span class="atri-main">ATRI</span>
           <div class="atri-glow"></div>
         </div>
+        <span class="eyebrow">AI-Powered HR Platform</span>
         <h1 class="system-title">智能人事管理系统</h1>
         <p class="system-subtitle">Artificial Intelligence Human Resources Management System</p>
         <div class="feature-list">
-          <div class="feature-item">
+          <div class="feature-item" style="--i: 0">
             <el-icon><ChatDotRound /></el-icon>
             <span>AI智能助手</span>
           </div>
-          <div class="feature-item">
+          <div class="feature-item" style="--i: 1">
             <el-icon><User /></el-icon>
             <span>员工管理</span>
           </div>
-          <div class="feature-item">
+          <div class="feature-item" style="--i: 2">
             <el-icon><Calendar /></el-icon>
             <span>考勤管理</span>
           </div>
-          <div class="feature-item">
+          <div class="feature-item" style="--i: 3">
             <el-icon><Money /></el-icon>
             <span>薪资管理</span>
           </div>
@@ -116,16 +118,17 @@ onMounted(() => {
       </div>
     </div>
 
-    <!-- 右侧登录表单 -->
-    <div class="login-box">
-      <div class="login-header">
-        <div class="header-atri-logo">
-          <span class="header-atri-text">ATRI</span>
-          <div class="header-atri-subtitle">HRMS</div>
+    <!-- 右侧登录表单 — Double-Bezel shell -->
+    <div class="login-shell">
+      <div class="login-box">
+        <div class="login-header">
+          <div class="header-atri-logo">
+            <span class="header-atri-text">ATRI</span>
+            <div class="header-atri-subtitle">HRMS</div>
+          </div>
+          <h2>欢迎使用 ATRI 智能人事系统</h2>
+          <p class="welcome-text">让亚托莉为您提供智能化的人事管理服务</p>
         </div>
-        <h2>欢迎使用 ATRI 智能人事系统</h2>
-        <p class="welcome-text">让亚托莉为您提供智能化的人事管理服务</p>
-      </div>
       
       <el-form ref="formRef" :model="loginForm" :rules="rules" class="login-form">
         <el-form-item prop="username">
@@ -163,44 +166,48 @@ onMounted(() => {
       </el-form>
       
       <div class="login-tips">
-        <div class="tips-header">
+        <div class="tips-header" @click="showAccounts = !showAccounts">
           <el-icon><InfoFilled /></el-icon>
           <span>测试账号</span>
+          <el-icon class="tips-toggle" :class="{ 'is-expanded': showAccounts }"><ArrowDown /></el-icon>
         </div>
-        <div class="account-grid">
-          <div class="account-item">
-            <strong>总经理</strong>
-            <span>gm / 123456</span>
+        <transition name="accounts-collapse">
+          <div v-show="showAccounts" class="account-grid">
+            <div class="account-item" style="--i: 0">
+              <strong>总经理</strong>
+              <span>gm / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 1">
+              <strong>HR专员</strong>
+              <span>hr_lina / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 2">
+              <strong>HR经理</strong>
+              <span>hr_manager / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 3">
+              <strong>部门经理</strong>
+              <span>manager_zhao / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 4">
+              <strong>财务经理</strong>
+              <span>finance_liu / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 5">
+              <strong>财务专员</strong>
+              <span>finance_chen / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 6">
+              <strong>普通员工</strong>
+              <span>emp_zhou / 123456</span>
+            </div>
+            <div class="account-item" style="--i: 7">
+              <strong>开发人员</strong>
+              <span>yunyue / yunyue</span>
+            </div>
           </div>
-          <div class="account-item">
-            <strong>HR专员</strong>
-            <span>hr_lina / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>HR经理</strong>
-            <span>hr_manager / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>部门经理</strong>
-            <span>manager_zhao / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>财务经理</strong>
-            <span>finance_liu / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>财务专员</strong>
-            <span>finance_chen / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>普通员工</strong>
-            <span>emp_zhou / 123456</span>
-          </div>
-          <div class="account-item">
-            <strong>开发人员</strong>
-            <span>yunyue / yunyue</span>
-          </div>
-        </div>
+        </transition>
+      </div>
       </div>
     </div>
   </div>
@@ -208,7 +215,7 @@ onMounted(() => {
 
 <style scoped>
 .login-container {
-  height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -253,10 +260,10 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(102, 126, 234, 0.6) 0%, 
-    rgba(118, 75, 162, 0.6) 50%,
-    rgba(64, 158, 255, 0.4) 100%);
+  background: linear-gradient(135deg,
+    rgba(37, 99, 235, 0.55) 0%,
+    rgba(20, 120, 140, 0.55) 50%,
+    rgba(20, 184, 166, 0.4) 100%);
   backdrop-filter: blur(1px);
 }
 
@@ -279,6 +286,17 @@ onMounted(() => {
   }
 }
 
+@keyframes staggerIn {
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 .atri-branding {
   text-align: left;
   padding: 40px;
@@ -293,7 +311,7 @@ onMounted(() => {
 .atri-main {
   font-size: 72px;
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica', sans-serif;
+  font-family: 'Geist', 'Arial Black', 'Helvetica', sans-serif;
   background: linear-gradient(45deg, #ffffff, #e3f2fd, #bbdefb, #90caf9);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -310,7 +328,7 @@ onMounted(() => {
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, #667eea, #764ba2);
+  background: linear-gradient(45deg, var(--primary-start), var(--primary-end));
   filter: blur(20px);
   opacity: 0.6;
   z-index: 1;
@@ -346,6 +364,22 @@ onMounted(() => {
   font-style: italic;
 }
 
+/* Eyebrow tag — microscopic pill badge */
+.eyebrow {
+  display: inline-flex;
+  padding: 5px 14px;
+  margin-bottom: 16px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(8px);
+}
+
 .feature-list {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -362,12 +396,23 @@ onMounted(() => {
   border-radius: 12px;
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+  /* Staggered entrance */
+  opacity: 0;
+  transform: translateY(16px);
+  animation: staggerIn 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation-delay: calc(0.4s + var(--i, 0) * 0.08s);
 }
 
 .feature-item:hover {
   background: rgba(255, 255, 255, 0.2);
-  transform: translateY(-2px);
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+}
+
+.feature-item:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
 }
 
 .feature-item .el-icon {
@@ -380,26 +425,31 @@ onMounted(() => {
   font-weight: 500;
 }
 
-.login-box {
-  width: 450px;
-  padding: 40px;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.75) 0%,
-    rgba(240, 245, 255, 0.7) 30%,
-    rgba(235, 240, 255, 0.72) 70%,
-    rgba(245, 248, 255, 0.75) 100%);
-  border-radius: 20px;
-  box-shadow: 
-    0 20px 60px rgba(0, 0, 0, 0.3),
-    0 0 0 1px rgba(255, 255, 255, 0.5),
-    inset 0 1px 0 rgba(255, 255, 255, 0.7),
-    inset 0 0 20px rgba(102, 126, 234, 0.05);
-  backdrop-filter: blur(15px);
-  border: 1px solid rgba(255, 255, 255, 0.4);
+/* ── Double-Bezel: Outer Shell ── */
+.login-shell {
+  width: 462px;
+  padding: 4px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(2px);
   z-index: 1;
   position: relative;
-  animation: slideInFromRight 0.8s cubic-bezier(0.4, 0, 0.2, 1), 
+  animation: slideInFromRight 0.8s cubic-bezier(0.32, 0.72, 0, 1),
              floatSubtle 6s ease-in-out infinite 1s;
+}
+
+/* ── Double-Bezel: Inner Core ── */
+.login-box {
+  width: 100%;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 20px;
+  box-shadow:
+    inset 0 1px 1px rgba(255, 255, 255, 0.7),
+    inset 0 0 20px rgba(37, 99, 235, 0.03),
+    0 20px 60px rgba(15, 23, 42, 0.15);
+  backdrop-filter: blur(24px);
 }
 
 @keyframes slideInFromRight {
@@ -422,40 +472,20 @@ onMounted(() => {
   }
 }
 
-/* 为登录框添加更明显的内部光效和渐变 */
-.login-box::before {
+/* Shell glow — subtle ambient light */
+.login-shell::before {
   content: '';
   position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(135deg, 
-    rgba(102, 126, 234, 0.08) 0%,
-    rgba(118, 75, 162, 0.06) 30%,
-    rgba(64, 158, 255, 0.05) 70%,
-    rgba(147, 197, 253, 0.08) 100%);
-  border-radius: 20px;
+  inset: -1px;
+  background: linear-gradient(135deg,
+    rgba(37, 99, 235, 0.15) 0%,
+    rgba(20, 140, 160, 0.12) 50%,
+    rgba(20, 184, 166, 0.15) 100%);
+  border-radius: 25px;
+  filter: blur(12px);
+  opacity: 0.4;
   pointer-events: none;
   z-index: -1;
-}
-
-.login-box::after {
-  content: '';
-  position: absolute;
-  top: -2px;
-  left: -2px;
-  right: -2px;
-  bottom: -2px;
-  background: linear-gradient(135deg, 
-    rgba(102, 126, 234, 0.2) 0%,
-    rgba(118, 75, 162, 0.15) 50%,
-    rgba(64, 158, 255, 0.2) 100%);
-  border-radius: 22px;
-  filter: blur(8px);
-  opacity: 0.3;
-  pointer-events: none;
-  z-index: -2;
 }
 
 .login-header {
@@ -471,8 +501,8 @@ onMounted(() => {
 .header-atri-text {
   font-size: 48px;
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Geist', 'Arial Black', 'Helvetica', sans-serif;
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -484,7 +514,7 @@ onMounted(() => {
 .header-atri-subtitle {
   font-size: 14px;
   font-weight: 600;
-  color: #667eea;
+  color: var(--primary-solid);
   letter-spacing: 2px;
   margin-top: 5px;
 }
@@ -517,7 +547,7 @@ onMounted(() => {
   border-radius: 12px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(200, 210, 240, 0.6);
-  background: linear-gradient(135deg, 
+  background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.7) 0%,
     rgba(240, 245, 255, 0.65) 50%,
     rgba(235, 240, 255, 0.7) 100%);
@@ -526,18 +556,18 @@ onMounted(() => {
 }
 
 .login-input :deep(.el-input__wrapper:hover) {
-  border-color: rgba(102, 126, 234, 0.5);
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.2);
-  background: linear-gradient(135deg, 
+  border-color: rgba(37, 99, 235, 0.5);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.2);
+  background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.85) 0%,
     rgba(240, 245, 255, 0.8) 50%,
     rgba(235, 240, 255, 0.85) 100%);
 }
 
 .login-input :deep(.el-input__wrapper.is-focus) {
-  border-color: rgba(102, 126, 234, 0.7);
-  box-shadow: 0 4px 20px rgba(102, 126, 234, 0.25);
-  background: linear-gradient(135deg, 
+  border-color: rgba(37, 99, 235, 0.7);
+  box-shadow: 0 4px 20px rgba(37, 99, 235, 0.25);
+  background: linear-gradient(135deg,
     rgba(255, 255, 255, 0.9) 0%,
     rgba(240, 245, 255, 0.85) 50%,
     rgba(235, 240, 255, 0.9) 100%);
@@ -546,21 +576,26 @@ onMounted(() => {
 .login-btn {
   width: 100%;
   height: 50px;
-  border-radius: 12px;
+  border-radius: 14px;
   font-size: 16px;
   font-weight: 600;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   border: none;
-  transition: all 0.3s ease;
+  transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .login-btn:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  box-shadow: 0 12px 32px rgba(37, 99, 235, 0.35);
+}
+
+.login-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
 }
 
 .login-tips {
-  background: linear-gradient(135deg, 
+  background: linear-gradient(135deg,
     rgba(240, 245, 255, 0.7) 0%,
     rgba(235, 240, 255, 0.75) 50%,
     rgba(230, 235, 255, 0.8) 100%);
@@ -568,26 +603,64 @@ onMounted(() => {
   padding: 20px;
   border: 1px solid rgba(200, 210, 240, 0.5);
   backdrop-filter: blur(15px);
-  box-shadow: 
+  box-shadow:
     0 4px 12px rgba(0, 0, 0, 0.08),
     inset 0 1px 0 rgba(255, 255, 255, 0.5),
-    inset 0 0 10px rgba(102, 126, 234, 0.03);
+    inset 0 0 10px rgba(37, 99, 235, 0.03);
 }
 
 .tips-header {
   display: flex;
   align-items: center;
   gap: 8px;
-  margin-bottom: 15px;
   color: #2d3748;
   font-weight: 600;
   font-size: 14px;
   text-shadow: 0 1px 1px rgba(255, 255, 255, 0.6);
+  cursor: pointer;
+  user-select: none;
+  transition: color 0.2s ease;
+}
+
+.tips-header:hover {
+  color: var(--primary-solid);
+}
+
+.tips-toggle {
+  margin-left: auto;
+  font-size: 12px;
+  transition: transform 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.tips-toggle.is-expanded {
+  transform: rotate(180deg);
+}
+
+/* 折叠动画 */
+.accounts-collapse-enter-active,
+.accounts-collapse-leave-active {
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
+  overflow: hidden;
+}
+
+.accounts-collapse-enter-from,
+.accounts-collapse-leave-to {
+  opacity: 0;
+  max-height: 0;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.accounts-collapse-enter-to,
+.accounts-collapse-leave-from {
+  opacity: 1;
+  max-height: 500px;
 }
 
 .account-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
+  margin-top: 15px;
   gap: 12px;
 }
 
@@ -596,25 +669,29 @@ onMounted(() => {
   flex-direction: column;
   gap: 4px;
   padding: 10px;
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.8) 0%,
-    rgba(240, 245, 255, 0.75) 50%,
-    rgba(235, 240, 255, 0.8) 100%);
+  background: rgba(255, 255, 255, 0.6);
   border-radius: 8px;
-  border: 1px solid rgba(200, 210, 240, 0.4);
+  border: 1px solid rgba(200, 210, 240, 0.3);
   backdrop-filter: blur(10px);
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+  /* Staggered entrance */
+  opacity: 0;
+  transform: translateY(12px);
+  animation: staggerIn 0.5s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation-delay: calc(0.6s + var(--i, 0) * 0.05s);
 }
 
 .account-item:hover {
-  border-color: rgba(102, 126, 234, 0.4);
-  box-shadow: 0 4px 16px rgba(102, 126, 234, 0.15);
-  background: linear-gradient(135deg, 
-    rgba(255, 255, 255, 0.9) 0%,
-    rgba(240, 245, 255, 0.85) 50%,
-    rgba(235, 240, 255, 0.9) 100%);
-  transform: translateY(-1px);
+  border-color: rgba(37, 99, 235, 0.4);
+  box-shadow: 0 4px 16px rgba(37, 99, 235, 0.15);
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-2px);
+}
+
+.account-item:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
 }
 
 .account-item strong {

@@ -341,7 +341,7 @@ onMounted(loadDocuments)
 .card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text-primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -349,13 +349,13 @@ onMounted(loadDocuments)
 
 .title-icon {
   font-size: 18px;
-  color: #5b7cfa;
+  color: var(--primary-solid);
   flex-shrink: 0;
 }
 
 .card-desc {
   font-size: 13px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .upload-area {
@@ -364,14 +364,14 @@ onMounted(loadDocuments)
 
 .upload-area :deep(.el-upload-dragger) {
   border-radius: 12px;
-  border: 1px dashed #d8dde7;
-  background: #fafbfd;
+  border: 1px dashed var(--border-default);
+  background: var(--surface-elevated);
   transition: all 0.25s ease;
   padding: 40px 20px;
 }
 
 .upload-area :deep(.el-upload-dragger:hover) {
-  border-color: #5b7cfa;
+  border-color: var(--primary-solid);
   background: rgba(91, 124, 250, 0.03);
 }
 
@@ -384,11 +384,11 @@ onMounted(loadDocuments)
 
 .upload-icon {
   font-size: 36px;
-  color: #b8bdc7;
+  color: var(--text-muted);
 }
 
 .upload-icon.is-loading {
-  color: #5b7cfa;
+  color: var(--primary-solid);
   animation: spin 1s linear infinite;
 }
 
@@ -399,17 +399,17 @@ onMounted(loadDocuments)
 
 .upload-text {
   font-size: 15px;
-  color: #606266;
+  color: var(--text-secondary);
 }
 
 .upload-text em {
-  color: #409eff;
+  color: var(--primary-solid);
   font-style: normal;
 }
 
 .upload-tip {
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .pagination-wrap {
@@ -431,7 +431,7 @@ onMounted(loadDocuments)
 
 .rerank-hint {
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .search-results {
@@ -443,13 +443,13 @@ onMounted(loadDocuments)
 .result-card {
   padding: 16px;
   border-radius: 10px;
-  background: linear-gradient(135deg, #f8faff 0%, #f0f5ff 100%);
-  border: 1px solid #e8edf5;
+  background: linear-gradient(135deg, var(--surface-elevated) 0%, var(--surface-muted) 100%);
+  border: 1px solid var(--border-default);
   transition: box-shadow 0.2s ease;
 }
 
 .result-card:hover {
-  box-shadow: 0 4px 12px rgba(64, 158, 255, 0.1);
+  box-shadow: 0 4px 12px rgba(37, 99, 235, 0.1);
 }
 
 .result-header {
@@ -461,12 +461,12 @@ onMounted(loadDocuments)
 
 .result-source {
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .result-content {
   font-size: 14px;
-  color: #303133;
+  color: var(--text-primary);
   line-height: 1.7;
   white-space: pre-wrap;
   word-break: break-word;
@@ -483,8 +483,8 @@ onMounted(loadDocuments)
 .chunk-item {
   padding: 14px;
   border-radius: 8px;
-  background: #f9fafb;
-  border: 1px solid #ebeef5;
+  background: var(--surface-base);
+  border: 1px solid var(--border-default);
 }
 
 .chunk-header {
@@ -496,12 +496,12 @@ onMounted(loadDocuments)
 
 .chunk-tokens {
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .chunk-text {
   font-size: 13px;
-  color: #303133;
+  color: var(--text-primary);
   line-height: 1.7;
   white-space: pre-wrap;
   word-break: break-word;

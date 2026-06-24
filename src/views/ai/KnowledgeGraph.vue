@@ -25,7 +25,7 @@ const syncing = ref(false)
 
 // 节点类型颜色映射
 const nodeColorMap = {
-  employee: '#409EFF',
+  employee: '#2563eb',
   department: '#67C23A',
   position: '#E6A23C',
   role: '#9B59B6'
@@ -339,7 +339,7 @@ onMounted(loadGraph)
 .card-title {
   font-size: 15px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text-primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -347,13 +347,13 @@ onMounted(loadGraph)
 
 .title-icon {
   font-size: 17px;
-  color: #5b7cfa;
+  color: var(--primary-solid);
   flex-shrink: 0;
 }
 
 .card-desc {
   font-size: 13px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .search-section {
@@ -367,15 +367,15 @@ onMounted(loadGraph)
 .result-title {
   font-size: 13px;
   font-weight: 600;
-  color: #606266;
+  color: var(--text-secondary);
   margin-bottom: 10px;
   padding-bottom: 8px;
-  border-bottom: 1px solid #ebeef5;
+  border-bottom: 1px solid var(--border-default);
 }
 
 .relation-item {
   padding: 8px 0;
-  border-bottom: 1px dashed #ebeef5;
+  border-bottom: 1px dashed var(--border-default);
 }
 
 .relation-item:last-child {
@@ -391,7 +391,7 @@ onMounted(loadGraph)
 
 .relation-arrow {
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
   white-space: nowrap;
 }
 
@@ -417,13 +417,13 @@ onMounted(loadGraph)
 
 .legend-label {
   font-size: 13px;
-  color: #606266;
+  color: var(--text-secondary);
 }
 
 .sync-tip {
   margin-top: 10px;
   font-size: 12px;
-  color: #909399;
+  color: var(--status-info);
   line-height: 1.5;
 }
 

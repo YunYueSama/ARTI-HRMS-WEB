@@ -301,7 +301,7 @@ onMounted(loadPageData)
     </section>
 
     <section class="metrics-grid">
-      <el-card v-for="item in metricCards" :key="item.label" shadow="hover" class="metric-card">
+      <el-card v-for="(item, index) in metricCards" :key="item.label" shadow="hover" class="metric-card" :style="{ '--i': index }">
         <div class="metric">
           <div class="metric-label">{{ item.label }}</div>
           <div class="metric-value">{{ item.value }}</div>
@@ -444,27 +444,56 @@ onMounted(loadPageData)
   display: flex;
   justify-content: space-between;
   gap: 24px;
-  padding: 32px;
-  margin-bottom: 22px;
+  padding: 40px;
+  margin-bottom: 28px;
   border-radius: 28px;
   color: #fff;
   background: linear-gradient(135deg, #0f3f85 0%, #145da0 38%, #127a72 100%);
+  position: relative;
+  overflow: hidden;
+  /* Entrance animation */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: heroReveal 0.7s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+}
+
+@keyframes heroReveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Ambient glow behind hero */
+.hero-panel::before {
+  content: '';
+  position: absolute;
+  top: -40%;
+  right: -10%;
+  width: 300px;
+  height: 300px;
+  background: radial-gradient(circle, rgba(20, 184, 166, 0.2) 0%, transparent 70%);
+  pointer-events: none;
 }
 
 .hero-panel h1 {
   margin: 0;
   font-size: 52px;
   line-height: 1.06;
+  text-wrap: balance;
 }
 
 .eyebrow {
   display: inline-flex;
-  padding: 6px 12px;
+  padding: 6px 14px;
   margin-bottom: 14px;
   border-radius: 999px;
-  background: rgba(255, 255, 255, 0.14);
-  font-size: 12px;
-  letter-spacing: 0.1em;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
 }
 
 .hero-desc {
@@ -499,13 +528,40 @@ onMounted(loadPageData)
   color: #fff;
   border-color: rgba(255, 255, 255, 0.36);
   background: rgba(255, 255, 255, 0.08);
+  transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.hero-btn:hover {
+  background: rgba(255, 255, 255, 0.16);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+}
+
+.hero-btn:active {
+  transform: translateY(0) scale(0.98);
+  transition-duration: 0.08s;
 }
 
 .metrics-grid {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
   gap: 20px;
-  margin-bottom: 22px;
+  margin-bottom: 28px;
+}
+
+/* Staggered entrance for metric cards */
+.metric-card {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: staggerIn 0.6s cubic-bezier(0.32, 0.72, 0, 1) forwards;
+  animation-delay: calc(0.15s + var(--i, 0) * 0.08s);
+}
+
+@keyframes staggerIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 .metric-card {
@@ -553,6 +609,12 @@ onMounted(loadPageData)
   padding: 18px;
   border-radius: 18px;
   background: linear-gradient(180deg, #f8fbff 0%, #f1f5f9 100%);
+  transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.tile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(15, 23, 42, 0.06);
 }
 
 .tile span {
@@ -604,6 +666,12 @@ onMounted(loadPageData)
   padding: 16px 18px;
   border-radius: 18px;
   background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+  transition: all 0.35s cubic-bezier(0.32, 0.72, 0, 1);
+}
+
+.leave-item:hover {
+  transform: translateX(4px);
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.05);
 }
 
 .leave-type {

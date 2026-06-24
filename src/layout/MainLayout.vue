@@ -326,7 +326,7 @@ onBeforeUnmount(() => {
 .atri-main {
   font-size: 24px;
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica', sans-serif;
+  font-family: 'Geist', 'Arial Black', 'Helvetica', sans-serif;
   background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 50%, #90caf9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -353,7 +353,7 @@ onBeforeUnmount(() => {
 .atri-mini {
   font-size: 28px;
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica', sans-serif;
+  font-family: 'Geist', 'Arial Black', 'Helvetica', sans-serif;
   background: linear-gradient(135deg, #ffffff 0%, #e3f2fd 50%, #90caf9 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -396,22 +396,24 @@ onBeforeUnmount(() => {
   margin: 4px 0;
   border-radius: 12px;
   transition:
-    background-color 0.2s ease,
-    color 0.2s ease,
-    box-shadow 0.2s ease,
-    transform 0.2s ease;
+    background-color 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+    color 0.25s cubic-bezier(0.32, 0.72, 0, 1),
+    box-shadow 0.35s cubic-bezier(0.32, 0.72, 0, 1),
+    transform 0.35s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .menu-scroll :deep(.el-menu-item:hover),
 .menu-scroll :deep(.el-sub-menu__title:hover) {
   background: rgba(255, 255, 255, 0.08);
   color: #fff;
+  transform: translateX(4px);
 }
 
 .menu-scroll :deep(.el-menu-item.is-active) {
-  background: linear-gradient(135deg, #2563eb 0%, #1d9f94 100%);
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   color: #fff;
   box-shadow: 0 10px 24px rgba(36, 99, 235, 0.22);
+  transform: translateX(4px);
 }
 
 .menu-scroll :deep(.el-sub-menu .el-menu-item) {
@@ -460,12 +462,18 @@ onBeforeUnmount(() => {
   color: #475569;
   padding: 8px;
   border-radius: 10px;
-  transition: all 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .collapse-btn:hover {
-  color: #2563eb;
+  color: var(--primary-solid);
   background: rgba(37, 99, 235, 0.08);
+  transform: scale(1.08);
+}
+
+.collapse-btn:active {
+  transform: scale(0.95);
+  transition-duration: 0.08s;
 }
 
 .header-right {
@@ -488,9 +496,9 @@ onBeforeUnmount(() => {
   align-items: center;
   gap: 6px;
   padding: 8px 16px;
-  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 100%);
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(20, 184, 166, 0.1) 100%);
   border-radius: 25px;
-  border: 1px solid rgba(102, 126, 234, 0.2);
+  border: 1px solid rgba(37, 99, 235, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -515,8 +523,8 @@ onBeforeUnmount(() => {
 .atri-badge-text {
   font-size: 14px;
   font-weight: 900;
-  font-family: 'Arial Black', 'Helvetica', sans-serif;
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  font-family: 'Geist', 'Arial Black', 'Helvetica', sans-serif;
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -525,7 +533,7 @@ onBeforeUnmount(() => {
 
 .powered-text {
   font-size: 11px;
-  color: #667eea;
+  color: var(--primary-solid);
   font-weight: 500;
   opacity: 0.8;
 }
@@ -538,11 +546,12 @@ onBeforeUnmount(() => {
   color: #334155;
   padding: 8px 12px;
   border-radius: 999px;
-  transition: background 0.2s ease;
+  transition: all 0.3s cubic-bezier(0.32, 0.72, 0, 1);
 }
 
 .user-info:hover {
   background: rgba(15, 23, 42, 0.05);
+  transform: scale(1.02);
 }
 
 .username {

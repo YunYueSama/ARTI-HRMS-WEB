@@ -501,8 +501,8 @@ onMounted(loadPageData)
           <div class="mobile-card-actions">
             <el-button type="primary" plain @click="handleDetail(row)">详情</el-button>
             <el-button v-if="canEditSalary" type="primary" plain @click="handleEdit(row)">编辑</el-button>
-            <el-button v-if="row.status === '寰呭彂鏀?' && canDirectPay" type="success" plain @click="handlePay(row)">直接发放</el-button>
-            <el-button v-if="row.status === '寰呭鎵?' && canApproveSalary" type="warning" plain @click="handleApprove(row)">审批通过</el-button>
+            <el-button v-if="row.status === '待发放' && canDirectPay" type="success" plain @click="handlePay(row)">直接发放</el-button>
+            <el-button v-if="row.status === '待审批' && canApproveSalary" type="warning" plain @click="handleApprove(row)">审批通过</el-button>
           </div>
         </div>
       </div>
@@ -597,7 +597,7 @@ onMounted(loadPageData)
         <el-descriptions-item label="奖金">{{ formatMoney(currentDetail.bonus) }}</el-descriptions-item>
         <el-descriptions-item label="加班费">{{ formatMoney(currentDetail.overtimePay) }}</el-descriptions-item>
         <el-descriptions-item label="应发工资" :span="2">
-          <span style="color: #409EFF; font-weight: bold;">{{ formatMoney(currentDetail.grossSalary) }}</span>
+          <span style="color: #2563eb; font-weight: bold;">{{ formatMoney(currentDetail.grossSalary) }}</span>
         </el-descriptions-item>
         <el-descriptions-item label="社保扣款">{{ formatMoney(currentDetail.socialInsurance) }}</el-descriptions-item>
         <el-descriptions-item label="公积金扣款">{{ formatMoney(currentDetail.housingFund) }}</el-descriptions-item>
@@ -646,9 +646,9 @@ onMounted(loadPageData)
 .salary-mobile-card {
   padding: 16px;
   border-radius: 18px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #ffffff 0%, var(--surface-elevated) 100%);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 10px 24px var(--shadow-soft);
 }
 
 .mobile-card-top {
@@ -662,13 +662,13 @@ onMounted(loadPageData)
 .mobile-card-title {
   font-size: 16px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .mobile-card-subtitle {
   margin-top: 4px;
   font-size: 13px;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .mobile-money-grid {
@@ -683,21 +683,21 @@ onMounted(loadPageData)
   gap: 4px;
   padding: 12px;
   border-radius: 14px;
-  background: #f8fafc;
+  background: var(--surface-base);
 }
 
 .money-item span {
   font-size: 12px;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .money-item strong {
   font-size: 13px;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .money-item-emphasis strong {
-  color: #16a34a;
+  color: var(--status-success);
 }
 
 .mobile-card-actions {
@@ -741,7 +741,7 @@ onMounted(loadPageData)
   }
 
   :deep(.el-descriptions) {
-    --el-descriptions-item-bordered-label-background: #f8fafc;
+    --el-descriptions-item-bordered-label-background: var(--surface-base);
   }
 
   :deep(.el-descriptions__table) {

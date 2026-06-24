@@ -162,6 +162,10 @@ const handleSubmit = async () => {
   }
 }
 
+const handleSearch = () => {
+  // Filtering is reactive via filteredAttendances computed property
+}
+
 const handleReset = () => {
   Object.assign(searchForm, { empName: '', status: '', dateRange: [] })
 }
@@ -193,7 +197,7 @@ onMounted(loadPageData)
           />
         </el-form-item>
         <el-form-item>
-          <el-button type="primary">搜索</el-button>
+          <el-button type="primary" @click="handleSearch">搜索</el-button>
           <el-button @click="handleReset">重置</el-button>
         </el-form-item>
       </el-form>
@@ -318,9 +322,9 @@ onMounted(loadPageData)
 .mobile-card {
   padding: 16px;
   border-radius: 18px;
-  background: linear-gradient(180deg, #ffffff 0%, #f8fbff 100%);
-  border: 1px solid rgba(226, 232, 240, 0.9);
-  box-shadow: 0 10px 24px rgba(15, 23, 42, 0.06);
+  background: linear-gradient(180deg, #ffffff 0%, var(--surface-elevated) 100%);
+  border: 1px solid var(--border-default);
+  box-shadow: 0 10px 24px var(--shadow-soft);
 }
 
 .mobile-card-top {
@@ -334,13 +338,13 @@ onMounted(loadPageData)
 .mobile-card-title {
   font-size: 16px;
   font-weight: 700;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .mobile-card-subtitle {
   margin-top: 4px;
   font-size: 13px;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .mobile-card-grid {
@@ -355,18 +359,18 @@ onMounted(loadPageData)
   gap: 4px;
   padding: 12px;
   border-radius: 14px;
-  background: #f8fafc;
+  background: var(--surface-base);
 }
 
 .mobile-item span {
   font-size: 12px;
-  color: #64748b;
+  color: var(--text-secondary);
 }
 
 .mobile-item strong {
   font-size: 13px;
   line-height: 1.5;
-  color: #0f172a;
+  color: var(--text-primary);
 }
 
 .mobile-item-wide {

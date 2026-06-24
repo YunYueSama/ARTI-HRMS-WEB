@@ -263,7 +263,7 @@ onMounted(loadPersonas)
 .card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text-primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -271,13 +271,13 @@ onMounted(loadPersonas)
 
 .title-icon {
   font-size: 18px;
-  color: #5b7cfa;
+  color: var(--primary-solid);
   flex-shrink: 0;
 }
 
 .card-desc {
   font-size: 13px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .name-cell {
@@ -286,7 +286,7 @@ onMounted(loadPersonas)
 }
 
 .content-preview {
-  color: #909399;
+  color: var(--status-info);
   font-size: 13px;
 }
 

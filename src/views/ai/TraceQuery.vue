@@ -445,7 +445,7 @@ onMounted(() => {
 .card-title {
   font-size: 16px;
   font-weight: 600;
-  color: #1a1a2e;
+  color: var(--text-primary);
   display: inline-flex;
   align-items: center;
   gap: 8px;
@@ -453,13 +453,13 @@ onMounted(() => {
 
 .title-icon {
   font-size: 18px;
-  color: #5b7cfa;
+  color: var(--primary-solid);
   flex-shrink: 0;
 }
 
 .card-desc {
   font-size: 13px;
-  color: #909399;
+  color: var(--status-info);
 }
 
 .filter-bar {
@@ -478,7 +478,7 @@ onMounted(() => {
   grid-template-columns: repeat(4, 1fr);
   gap: 16px;
   padding: 16px 8px 24px;
-  border-bottom: 1px dashed #e5e7eb;
+  border-bottom: 1px dashed var(--border-default);
   margin-bottom: 16px;
 }
 
@@ -490,14 +490,14 @@ onMounted(() => {
 
 .summary-label {
   font-size: 12px;
-  color: #94a3b8;
+  color: var(--text-muted);
   letter-spacing: 0.04em;
 }
 
 .summary-value {
   font-size: 22px;
   font-weight: 700;
-  color: #1f2937;
+  color: var(--text-primary);
   font-feature-settings: "tnum";
 }
 
@@ -527,13 +527,13 @@ onMounted(() => {
 
 .detail-section h4 {
   margin: 0 0 8px 0;
-  color: #303133;
+  color: var(--text-primary);
   font-size: 14px;
 }
 
 .detail-content {
   padding: 12px 16px;
-  background: #f5f7fa;
+  background: var(--surface-muted);
   border-radius: 8px;
   font-size: 13px;
   line-height: 1.7;
@@ -541,7 +541,7 @@ onMounted(() => {
   word-break: break-word;
   max-height: 200px;
   overflow-y: auto;
-  color: #303133;
+  color: var(--text-primary);
 }
 
 .error-content {

@@ -537,7 +537,7 @@ onMounted(loadPageData)
 }
 
 .page-header {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   color: white;
   padding: 32px;
   margin-bottom: 24px;
@@ -657,7 +657,7 @@ onMounted(loadPageData)
 
 .search-icon {
   font-size: 20px;
-  color: #667eea;
+  color: var(--primary-solid);
 }
 
 .search-title {
@@ -681,12 +681,12 @@ onMounted(loadPageData)
 }
 
 .search-form :deep(.el-input__wrapper:hover) {
-  border-color: #667eea;
+  border-color: var(--primary-solid);
 }
 
 .search-form :deep(.el-input__wrapper.is-focus) {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary-solid);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .table-card {
@@ -709,7 +709,7 @@ onMounted(loadPageData)
 
 .header-icon {
   font-size: 20px;
-  color: #667eea;
+  color: var(--primary-solid);
 }
 
 .header-title {
@@ -870,7 +870,7 @@ onMounted(loadPageData)
 }
 
 .employee-dialog :deep(.el-dialog__header) {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: linear-gradient(135deg, var(--primary-start) 0%, var(--primary-end) 100%);
   color: white;
   padding: 20px 24px;
   margin: 0;
@@ -901,12 +901,12 @@ onMounted(loadPageData)
 }
 
 .employee-form :deep(.el-input__wrapper:hover) {
-  border-color: #667eea;
+  border-color: var(--primary-solid);
 }
 
 .employee-form :deep(.el-input__wrapper.is-focus) {
-  border-color: #667eea;
-  box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+  border-color: var(--primary-solid);
+  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
 }
 
 .dialog-footer {
