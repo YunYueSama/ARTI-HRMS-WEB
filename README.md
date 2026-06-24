@@ -1,6 +1,6 @@
+
 <div align="center">
 
-<!-- TODO: 在 GitHub 网页编辑器中拖入 ATRI-logo.png，替换下方链接 -->
 <img src="https://github.com/user-attachments/assets/47258057-8df9-4bf0-9bfb-dc4a234e3f38" width="120" alt="ATRI Logo" />
 
 # ATRI-HRMS
@@ -21,10 +21,10 @@
 
 ## 系统预览
 
-<!-- TODO: 拖入 首页.png -->
 <div align="center">
-  <img src="https://github.com/user-attachments/assets/首页" width="900" alt="首页仪表盘" />
+  <img src="https://github.com/user-attachments/assets/55b18552-128e-4fc1-b616-83c6c8a145f2" width="900" alt="首页仪表盘" />
 </div>
+
 
 ## 核心功能
 
@@ -35,13 +35,12 @@
 <table>
   <tr>
     <td width="50%">
-      <!-- TODO: 拖入 chat.png -->
-      <img src="https://github.com/user-attachments/assets/chat" width="100%" alt="AI 聊天" />
+      <img src="https://github.com/user-attachments/assets/964215ac-7e3e-44ce-90b7-7c20a7b7a157" width="100%" alt="AI 聊天" />
     </td>
     <td width="50%">
-      <!-- TODO: 拖入 agent.png -->
-      <img src="https://github.com/user-attachments/assets/agent" width="100%" alt="AI Agent" />
+      <img src="https://github.com/user-attachments/assets/92c8fc3e-3547-4292-83b8-75963e3a2170" width="100%" alt="AI Agent" />
     </td>
+
   </tr>
   <tr>
     <td align="center"><b>Chat 模式</b><br/>SSE 流式对话，逐字渲染，支持模型切换与反馈</td>
@@ -56,12 +55,10 @@
 <table>
   <tr>
     <td width="50%">
-      <!-- TODO: 拖入 RAG知识库.png -->
-      <img src="https://github.com/user-attachments/assets/RAG知识库" width="100%" alt="RAG 知识库" />
+      <img src="https://github.com/user-attachments/assets/ee4ba8fc-2ff5-4f39-81a3-f49a844e6436" width="100%" alt="RAG 知识库" />
     </td>
     <td width="50%">
-      <!-- TODO: 拖入 RAG测评.png -->
-      <img src="https://github.com/user-attachments/assets/RAG测评" width="100%" alt="RAG 评测" />
+      <img src="https://github.com/user-attachments/assets/eaa41bd0-4dc0-43c7-a2ec-976cd3f3eb39" width="100%" alt="RAG 评测" />
     </td>
   </tr>
 </table>
@@ -73,12 +70,11 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
 <table>
   <tr>
     <td width="50%">
-      <!-- TODO: 拖入 知识图谱.png -->
-      <img src="https://github.com/user-attachments/assets/知识图谱" width="100%" alt="知识图谱" />
+      <img src="https://github.com/user-attachments/assets/7f498657-7beb-4aeb-aa69-724bfecb6089" width="100%" alt="知识图谱" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 Langfuse-LLM追踪.png -->
-      <img src="https://github.com/user-attachments/assets/Langfuse-LLM追踪" width="100%" alt="LLM 追踪" />
+      <img src="https://github.com/user-attachments/assets/532fe465-e5d4-43e7-a662-844f9e21b6a5" width="100%" alt="LLM 追踪" />
     </td>
   </tr>
 </table>
@@ -89,11 +85,11 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
   <tr>
     <td width="50%">
       <!-- TODO: 拖入 员工管理.png -->
-      <img src="https://github.com/user-attachments/assets/员工管理" width="100%" alt="员工管理" />
+      <img src="https://github.com/user-attachments/assets/57d1d73d-2c2c-4123-ad59-328272249663" width="100%" alt="员工管理" />
     </td>
     <td width="50%">
       <!-- TODO: 拖入 薪资记录管理.png -->
-      <img src="https://github.com/user-attachments/assets/薪资记录管理" width="100%" alt="薪资管理" />
+      <img src="https://github.com/user-attachments/assets/ec744c93-9b8d-4530-8417-48994b222d07" width="100%" alt="薪资管理" />
     </td>
   </tr>
   <tr>
