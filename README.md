@@ -1,7 +1,7 @@
 <div align="center">
 
 <!-- TODO: 在 GitHub 网页编辑器中拖入 ATRI-logo.png，替换下方链接 -->
-<img src="https://github.com/user-attachments/assets/ATRI-logo" width="120" alt="ATRI Logo" />
+<img src="https://github.com/user-attachments/assets/47258057-8df9-4bf0-9bfb-dc4a234e3f38" width="120" alt="ATRI Logo" />
 
 # ATRI-HRMS
 
