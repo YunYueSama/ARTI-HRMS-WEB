@@ -1,6 +1,7 @@
 <div align="center">
 
-<img src="imgs/ATRI-logo.png" width="120" alt="ATRI Logo" />
+<!-- TODO: 在 GitHub 网页编辑器中拖入 ATRI-logo.png，替换下方链接 -->
+<img src="https://github.com/user-attachments/assets/ATRI-logo" width="120" alt="ATRI Logo" />
 
 # ATRI-HRMS
 
@@ -20,8 +21,9 @@
 
 ## 系统预览
 
+<!-- TODO: 拖入 首页.png -->
 <div align="center">
-  <img src="imgs/首页.png" width="900" alt="首页仪表盘" />
+  <img src="https://github.com/user-attachments/assets/首页" width="900" alt="首页仪表盘" />
 </div>
 
 ## 核心功能
@@ -33,10 +35,12 @@
 <table>
   <tr>
     <td width="50%">
-      <img src="imgs/chat.png" alt="AI 聊天" />
+      <!-- TODO: 拖入 chat.png -->
+      <img src="https://github.com/user-attachments/assets/chat" alt="AI 聊天" />
     </td>
     <td width="50%">
-      <img src="imgs/agent.png" alt="AI Agent" />
+      <!-- TODO: 拖入 agent.png -->
+      <img src="https://github.com/user-attachments/assets/agent" alt="AI Agent" />
     </td>
   </tr>
   <tr>
@@ -52,10 +56,12 @@
 <table>
   <tr>
     <td width="50%">
-      <img src="imgs/RAG知识库.png" alt="RAG 知识库" />
+      <!-- TODO: 拖入 RAG知识库.png -->
+      <img src="https://github.com/user-attachments/assets/RAG知识库" alt="RAG 知识库" />
     </td>
     <td width="50%">
-      <img src="imgs/RAG测评.png" alt="RAG 评测" />
+      <!-- TODO: 拖入 RAG测评.png -->
+      <img src="https://github.com/user-attachments/assets/RAG测评" alt="RAG 评测" />
     </td>
   </tr>
 </table>
@@ -67,10 +73,12 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
 <table>
   <tr>
     <td width="50%">
-      <img src="imgs/知识图谱.png" alt="知识图谱" />
+      <!-- TODO: 拖入 知识图谱.png -->
+      <img src="https://github.com/user-attachments/assets/知识图谱" alt="知识图谱" />
     </td>
     <td width="50%">
-      <img src="imgs/Langfuse-LLM追踪.png" alt="LLM 追踪" />
+      <!-- TODO: 拖入 Langfuse-LLM追踪.png -->
+      <img src="https://github.com/user-attachments/assets/Langfuse-LLM追踪" alt="LLM 追踪" />
     </td>
   </tr>
 </table>
@@ -80,10 +88,12 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
 <table>
   <tr>
     <td width="50%">
-      <img src="imgs/员工管理.png" alt="员工管理" />
+      <!-- TODO: 拖入 员工管理.png -->
+      <img src="https://github.com/user-attachments/assets/员工管理" alt="员工管理" />
     </td>
     <td width="50%">
-      <img src="imgs/薪资记录管理.png" alt="薪资管理" />
+      <!-- TODO: 拖入 薪资记录管理.png -->
+      <img src="https://github.com/user-attachments/assets/薪资记录管理" alt="薪资管理" />
     </td>
   </tr>
   <tr>
