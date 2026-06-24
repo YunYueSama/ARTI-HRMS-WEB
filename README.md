@@ -100,19 +100,6 @@ ECharts 力导向图可视化实体关系，Langfuse 集成 Token 用量追踪�
 
 ---
 
-## 技术栈
-
-| 类别 | 技术 |
-|------|------|
-| 框架 | Vue 3 (Composition API + `<script setup>`) |
-| 构建 | Vite 7 |
-| UI 库 | Element Plus |
-| 状态管理 | Pinia 3 |
-| 路由 | Vue Router 4 |
-| HTTP | Axios（自动 snake_case ↔ camelCase 转换） |
-| 图表 | ECharts 6 (vue-echarts) |
-| 样式 | Scoped CSS + CSS Variables + Geist 字体 |
-
 ## 功能模块
 
 | 模块 | 功能 |
